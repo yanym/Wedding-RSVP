@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e1e24">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Save the Date — Yiming & Fiona | May 3, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#1e1e24;
+  --bgc:rgba(30,30,36,0.85);
+  --sur:rgba(255,255,255,0.08);
+  --surh:rgba(255,255,255,0.14);
+  --tx:#ffffff;
+  --txm:rgba(255,255,255,0.75);
+  --txl:rgba(255,255,255,0.45);
+  --ac:#e8d4a8;
+  --acl:#f5e6c8;
+  --ro:#f4b8c0;
+  --ros:#ffd6dc;
+  --sa:#b8e0b0;
+  --lav:#d4c4f0;
+  --rs:14px;--rm:24px;--rl:32px;--rxl:40px;
+  --eo:cubic-bezier(0.16,1,0.3,1);
+  --es:cubic-bezier(0.34,1.56,0.64,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative}
+
+/* ═══════════════════════════════════════
+   Animated Gradient Background
+   ═══════════════════════════════════════ */
+.bg-canvas{position:fixed;inset:0;z-index:0;overflow:hidden}
+
+/* Aurora blobs */
+.aurora{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;animation:auroraMove 20s ease-in-out infinite}
+.aurora-1{width:60vw;height:60vw;max-width:600px;max-height:600px;background:linear-gradient(135deg,#f4b8c0 0%,#ffd6dc 50%,#f8c4d0 100%);top:-10%;left:-15%;animation-delay:0s}
+.aurora-2{width:50vw;height:50vw;max-width:500px;max-height:500px;background:linear-gradient(135deg,#b8e0b0 0%,#d0f0c8 50%,#c8e8c0 100%);top:20%;right:-20%;animation-delay:-5s}
+.aurora-3{width:55vw;height:55vw;max-width:550px;max-height:550px;background:linear-gradient(135deg,#e8d4a8 0%,#f5e6c8 50%,#e0d0a0 100%);bottom:-15%;left:20%;animation-delay:-10s}
+.aurora-4{width:45vw;height:45vw;max-width:450px;max-height:450px;background:linear-gradient(135deg,#d4c4f0 0%,#e8d8ff 50%,#c8b8e8 100%);bottom:10%;right:-10%;animation-delay:-15s}
+
+@keyframes auroraMove{
+  0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}
+  25%{transform:translate(30px,-40px) scale(1.1) rotate(5deg)}
+  50%{transform:translate(-20px,30px) scale(0.95) rotate(-5deg)}
+  75%{transform:translate(40px,20px) scale(1.05) rotate(3deg)}
+}
+
+/* Sparkle particles */
+.sparkle{position:absolute;width:4px;height:4px;background:white;border-radius:50%;opacity:0;animation:sparkle var(--dur) ease-in-out infinite}
+@keyframes sparkle{
+  0%,100%{opacity:0;transform:scale(0)}
+  50%{opacity:var(--op);transform:scale(1)}
+}
+
+/* Floating hearts & paws */
+.floater{position:fixed;pointer-events:none;z-index:1;opacity:0;font-size:var(--fs);animation:floatUp var(--dur) ease-out forwards}
+@keyframes floatUp{
+  0%{opacity:0;transform:translateY(0) rotate(0deg) scale(.5)}
+  15%{opacity:var(--pk)}
+  85%{opacity:calc(var(--pk)*.4)}
+  100%{opacity:0;transform:translateY(calc(-100vh - 50px)) rotate(var(--rot)) scale(.2)}
+}
+
+/* Noise texture */
+.noise{position:fixed;inset:0;opacity:.015;pointer-events:none;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+
+/* ═══════════════════════════════════════
+   Main Content
+   ═══════════════════════════════════════ */
+.main{position:relative;z-index:10;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
+
+/* Card */
+.card{background:var(--bgc);-webkit-backdrop-filter:blur(40px) saturate(180%);backdrop-filter:blur(40px) saturate(180%);border-radius:var(--rxl);padding:3rem 2.5rem;max-width:460px;width:100%;text-align:center;box-shadow:0 25px 80px rgba(0,0,0,0.4),0 0 0 .5px rgba(255,255,255,0.1) inset;position:relative;overflow:hidden}
+
+/* Shimmer border effect */
+.card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--ro),var(--ac),var(--sa),var(--lav),var(--ro));border-radius:calc(var(--rxl) + 2px);z-index:-1;opacity:.5;animation:shimmer 8s linear infinite}
+@keyframes shimmer{
+  0%{filter:hue-rotate(0deg)}
+  100%{filter:hue-rotate(360deg)}
+}
+
+.card-content{position:relative;z-index:1}
+
+/* Decorative rings */
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.08);pointer-events:none;animation:ringPulse 4s ease-in-out infinite}
+.ring-1{width:150%;height:150%;top:-25%;left:-25%;animation-delay:0s}
+.ring-2{width:180%;height:180%;top:-40%;left:-40%;animation-delay:-2s}
+@keyframes ringPulse{
+  0%,100%{opacity:.3;transform:scale(1)}
+  50%{opacity:.1;transform:scale(1.02)}
+}
+
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:1.2rem;padding:6px 16px;background:rgba(232,212,168,0.1);border-radius:980px;border:.5px solid rgba(232,212,168,0.2)}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--ro);animation:dotPulse 2s ease-in-out infinite}
+@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+.names{font-family:'Great Vibes',cursive;font-size:clamp(3rem,9vw,4.5rem);line-height:1.1;margin-bottom:.2rem;background:linear-gradient(135deg,#fff 0%,var(--acl) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--txm);margin-bottom:.5rem}
+
+.tagline-fun{font-size:.78rem;color:var(--txl);margin-bottom:1.5rem}
+
+.divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--ac),transparent);margin:0 auto 1.5rem;border-radius:2px}
+
+.date-big{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,2.8rem);font-weight:600;letter-spacing:.02em;margin-bottom:.2rem;text-shadow:0 2px 20px rgba(232,212,168,0.3)}
+
+.date-day{font-size:.8rem;font-weight:400;color:var(--txm);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.8rem}
+
+.venue-section{background:rgba(255,255,255,0.04);border-radius:var(--rm);padding:1.2rem 1.5rem;margin-bottom:1.8rem;border:.5px solid rgba(255,255,255,0.06)}
+
+.venue-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;margin-bottom:.4rem;color:var(--acl)}
+
+.venue-address{font-size:.8rem;font-weight:300;color:var(--txm);line-height:1.5}
+
+.venue-address a{color:var(--txm);text-decoration:none;border-bottom:1px dotted var(--txl);transition:all .3s}
+.venue-address a:hover{color:var(--ac);border-color:var(--ac)}
+
+/* Mini countdown */
+.mini-cd{display:flex;justify-content:center;gap:1rem;margin-bottom:2rem}
+.mini-cd-item{text-align:center;min-width:52px}
+.mini-cd-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:500;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--txm) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mini-cd-label{font-size:.5rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--txl);margin-top:.4rem}
+
+/* Calendar dropdown */
+.cal-dropdown{position:relative;width:100%;margin-bottom:.8rem}
+
+.cal-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;width:100%;padding:1rem 1.5rem;background:linear-gradient(135deg,var(--ac) 0%,#d4c090 100%);color:var(--bg);border-radius:980px;font-size:.82rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;transition:all .4s var(--eo);box-shadow:0 4px 20px rgba(232,212,168,0.3)}
+.cal-btn:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 8px 30px rgba(232,212,168,0.4)}
+.cal-btn:active{transform:scale(.98)}
+.cal-btn svg{width:18px;height:18px}
+
+.cal-dropdown-content{position:absolute;bottom:calc(100% + 8px);left:0;right:0;background:var(--bgc);-webkit-backdrop-filter:blur(40px);backdrop-filter:blur(40px);border-radius:var(--rm);padding:.6rem;box-shadow:0 -15px 50px rgba(0,0,0,.5);border:.5px solid rgba(255,255,255,0.1);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s var(--eo);z-index:20}
+.cal-dropdown.open .cal-dropdown-content{opacity:1;visibility:visible;transform:translateY(0)}
+
+.cal-option{display:flex;align-items:center;gap:.8rem;padding:.85rem 1.1rem;border-radius:var(--rs);cursor:pointer;transition:all .25s ease;text-decoration:none;color:var(--tx)}
+.cal-option:hover{background:var(--sur)}
+.cal-option svg{width:22px;height:22px;flex-shrink:0}
+.cal-option-text{text-align:left}
+.cal-option-name{font-size:.85rem;font-weight:500}
+.cal-option-sub{font-size:.65rem;color:var(--txl);margin-top:1px}
+
+/* Success state */
+.success-msg{display:none;flex-direction:column;align-items:center;gap:.8rem;padding:1.2rem;background:rgba(184,224,176,0.1);border-radius:var(--rm);margin-top:1rem;border:.5px solid rgba(184,224,176,0.2);animation:successPop .5s var(--es)}
+.success-msg.show{display:flex}
+@keyframes successPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+.success-icon{font-size:2rem;animation:bounce 1s ease infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.success-text{font-size:.9rem;font-weight:500;color:var(--sa)}
+.success-sub{font-size:.72rem;color:var(--txl)}
+
+/* RSVP section */
+.rsvp-section{margin-top:2rem;padding-top:2rem;border-top:.5px solid rgba(255,255,255,0.08)}
+
+.rsvp-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.5rem}
+.rsvp-icon{font-size:1.2rem}
+.rsvp-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500}
+
+.rsvp-sub{font-size:.75rem;color:var(--txl);margin-bottom:1.5rem}
+
+.mini-form{text-align:left}
+.mf-group{margin-bottom:1.1rem}
+.mf-label{display:block;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--txm);margin-bottom:.4rem}
+.mf-input{width:100%;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.08);border-radius:var(--rs);outline:none;transition:all .3s ease}
+.mf-input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(232,212,168,0.15);background:var(--surh)}
+.mf-input::placeholder{color:var(--txl)}
+
+.att-toggle{display:flex;gap:.5rem}
+.att-btn{flex:1;padding:.75rem;text-align:center;background:var(--sur);border:.5px solid rgba(255,255,255,0.08);border-radius:var(--rs);font-size:.75rem;font-weight:500;color:var(--txm);cursor:pointer;transition:all .35s var(--eo)}
+.att-btn:hover{background:var(--surh);color:var(--tx)}
+.att-btn.sel-yes{background:rgba(184,224,176,0.15);border-color:var(--sa);color:var(--sa)}
+.att-btn.sel-no{background:rgba(244,184,192,0.15);border-color:var(--ro);color:var(--ro)}
+
+.rsvp-submit{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:.9rem;background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.1);border-radius:980px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .4s var(--eo);margin-top:1.2rem}
+.rsvp-submit:hover{background:var(--surh);transform:translateY(-1px)}
+.rsvp-submit:active{transform:scale(.98)}
+.rsvp-submit svg{width:16px;height:16px}
+.rsvp-submit.ok{background:rgba(184,224,176,0.2);border-color:var(--sa);color:var(--sa);pointer-events:none}
+
+/* Footer */
+.footer-link{margin-top:2rem;text-align:center}
+.footer-link a{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--txl);text-decoration:none;padding:.6rem 1.2rem;border-radius:980px;background:rgba(255,255,255,0.04);border:.5px solid rgba(255,255,255,0.06);transition:all .3s}
+.footer-link a:hover{color:var(--ac);background:rgba(255,255,255,0.08);border-color:rgba(232,212,168,0.2)}
+.footer-link a svg{width:14px;height:14px}
+
+/* Toast */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:100;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);color:var(--tx);padding:.9rem 1.6rem;border-radius:980px;box-shadow:0 10px 40px rgba(0,0,0,.5);font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:.6rem;opacity:0;transition:all .5s var(--es);border:.5px solid rgba(255,255,255,0.1)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+
+/* Party size stepper */
+.stepper{display:flex;align-items:center;justify-content:center;gap:.8rem;flex-wrap:wrap}
+.stepper-btn{width:40px;height:40px;border-radius:50%;border:.5px solid rgba(255,255,255,0.12);background:var(--sur);color:var(--tx);font-size:1.2rem;font-weight:300;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s var(--eo);flex-shrink:0;line-height:1}
+.stepper-btn:hover{background:var(--surh);border-color:rgba(232,212,168,0.3);color:var(--ac);transform:scale(1.08)}
+.stepper-btn:active{transform:scale(.92)}
+.stepper-btn.disabled{opacity:.25;pointer-events:none}
+.stepper-display{display:flex;flex-direction:column;align-items:center;min-width:48px}
+.stepper-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--acl) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:transform .2s var(--es)}
+.stepper-num.pop{transform:scale(1.3)}
+.stepper-label{font-size:.58rem;color:var(--txl);margin-top:.25rem;letter-spacing:.08em}
+.stepper-hint{width:100%;text-align:center;font-size:.65rem;color:var(--txl);margin-top:.2rem}
+
+/* Email autocomplete */
+.email-wrap{position:relative}
+.email-suggestions{position:absolute;top:100%;left:0;right:0;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border-radius:0 0 var(--rs) var(--rs);box-shadow:0 10px 30px rgba(0,0,0,.4);border:.5px solid rgba(255,255,255,0.1);border-top:none;z-index:30;overflow:hidden;display:none}
+.email-suggestions.open{display:block}
+.email-sug-item{padding:.6rem 1rem;font-size:.82rem;color:var(--txm);cursor:pointer;transition:all .2s ease}
+.email-sug-item:hover,.email-sug-item.active{background:var(--surh);color:var(--ac)}
+.email-sug-item span{color:var(--txl)}
+
+/* Notes */
+.mf-textarea{width:100%;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.08);border-radius:var(--rs);outline:none;transition:all .3s ease;resize:vertical;min-height:60px;max-height:120px;line-height:1.5}
+.mf-textarea:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(232,212,168,0.15);background:var(--surh)}
+.mf-textarea::placeholder{color:var(--txl)}
+.mf-optional{font-weight:400;color:var(--txl);text-transform:none;letter-spacing:0;font-size:.55rem}
+
+/* RSVP result states */
+.rsvp-result{display:none;text-align:center;animation:successPop .5s var(--es)}
+.rsvp-result.show{display:block}
+.rsvp-result-icon{font-size:2.8rem;margin-bottom:.8rem}
+.rsvp-result-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:.4rem}
+.rsvp-result-detail{font-size:.78rem;color:var(--txm);line-height:1.6;margin-bottom:1rem}
+.rsvp-result-detail strong{color:var(--ac);font-weight:500}
+.rsvp-result.success .rsvp-result-title{color:var(--sa)}
+.rsvp-result.error .rsvp-result-title{color:var(--ro)}
+.rsvp-result-actions{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.rsvp-again-btn,.rsvp-retry-btn,.rsvp-email-btn{padding:.65rem 1.2rem;border-radius:980px;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .3s var(--eo);border:none}
+.rsvp-again-btn{background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.1)}
+.rsvp-again-btn:hover{background:var(--surh)}
+.rsvp-retry-btn{background:rgba(244,184,192,0.15);color:var(--ro);border:.5px solid rgba(244,184,192,0.25)}
+.rsvp-retry-btn:hover{background:rgba(244,184,192,0.25)}
+.rsvp-email-btn{background:var(--sur);color:var(--txm);border:.5px solid rgba(255,255,255,0.08)}
+.rsvp-email-btn:hover{background:var(--surh);color:var(--tx)}
+
+/* Loading spinner on button */
+.rsvp-submit .spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,0.2);border-top-color:var(--tx);border-radius:50%;animation:spin .6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rsvp-submit.loading{pointer-events:none;opacity:.7}
+
+/* Invitation countdown section */
+.invite-cd-section{margin-top:2rem;padding-top:2rem;border-top:.5px solid rgba(255,255,255,0.08)}
+.invite-cd-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.5rem}
+.invite-cd-icon{font-size:1.2rem}
+.invite-cd-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500}
+.invite-cd-sub{font-size:.75rem;color:var(--txl);margin-bottom:1.2rem;text-align:center}
+.invite-cd .mini-cd-num{background:linear-gradient(180deg,var(--acl) 0%,var(--ro) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.invite-cd-note{text-align:center;margin-top:1rem;font-size:.72rem;color:var(--txl)}
+.invite-cd-note a{color:var(--ac);text-decoration:none;border-bottom:1px dotted var(--ac)}
+.invite-arrived{display:none;text-align:center;padding:1.2rem;background:rgba(232,212,168,0.08);border-radius:var(--rm);border:.5px solid rgba(232,212,168,0.15)}
+.invite-arrived.show{display:block}
+.invite-arrived-icon{font-size:2rem;margin-bottom:.5rem}
+.invite-arrived-text{font-size:.9rem;font-weight:500;color:var(--ac);margin-bottom:.3rem}
+.invite-arrived-sub{font-size:.72rem;color:var(--txl)}
+
+/* ═══ Responsive ═══ */
+@media(max-width:480px){
+  .card{padding:2rem 1.5rem;border-radius:var(--rl)}
+  .mini-cd{gap:.6rem}
+  .mini-cd-num{font-size:1.4rem}
+  .mini-cd-item{min-width:44px}
+  .venue-section{padding:1rem 1.2rem}
+  .att-toggle{flex-direction:column;gap:.4rem}
+  .stepper-btn{width:36px;height:36px;font-size:1rem}
+  .stepper-num{font-size:1.3rem}
+  .rsvp-result-actions{flex-direction:column}
+  .rsvp-result-actions button{width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- Animated Background -->
+<div class="bg-canvas">
+  <div class="aurora aurora-1"></div>
+  <div class="aurora aurora-2"></div>
+  <div class="aurora aurora-3"></div>
+  <div class="aurora aurora-4"></div>
+</div>
+<div class="noise"></div>
+
+<div class="toast" id="toast"><span id="toastIcon"></span><span id="toastMsg"></span></div>
+
+<main class="main">
+  <div class="card">
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+
+    <div class="card-content">
+      <div class="eyebrow"><span class="dot"></span> Save the Date <span class="dot"></span></div>
+
+      <div class="names">Yiming & Fiona</div>
+      <div class="tagline">are tying the knot!</div>
+      <div class="tagline-fun">Nina will be supervising. Treats may be involved. 🐾</div>
+
+      <div class="divider"></div>
+
+      <div class="date-big">May 3, 2026</div>
+      <div class="date-day">Sunday at 4:00 in the afternoon</div>
+
+      <div class="venue-section">
+        <div class="venue-name">🌸 Hummingbird House</div>
+        <div class="venue-address">
+          12805 Arroyo Doble Dr<br>
+          Manchaca, TX 78652<br>
+          <a href="https://maps.google.com/?q=12805+Arroyo+Doble+Dr+Manchaca+TX+78652" target="_blank" rel="noopener">View on Map →</a>
+        </div>
+      </div>
+
+      <div class="mini-cd">
+        <div class="mini-cd-item"><div class="mini-cd-num" id="cd-d">--</div><div class="mini-cd-label">Days</div></div>
+        <div class="mini-cd-item"><div class="mini-cd-num" id="cd-h">--</div><div class="mini-cd-label">Hours</div></div>
+        <div class="mini-cd-item"><div class="mini-cd-num" id="cd-m">--</div><div class="mini-cd-label">Mins</div></div>
+        <div class="mini-cd-item"><div class="mini-cd-num" id="cd-s">--</div><div class="mini-cd-label">Secs</div></div>
+      </div>
+
+      <!-- Calendar Dropdown -->
+      <div class="cal-dropdown" id="calDropdown">
+        <button class="cal-btn" onclick="toggleCalDropdown()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg>
+          Add to My Calendar
+        </button>
+        <div class="cal-dropdown-content">
+          <a class="cal-option" href="#" onclick="addToAppleCal(); return false;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="cal-option-text">
+              <div class="cal-option-name">Apple Calendar</div>
+              <div class="cal-option-sub">iPhone, iPad, Mac</div>
+            </div>
+          </a>
+          <a class="cal-option" href="#" onclick="addToGoogleCal(); return false;">
+            <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <div class="cal-option-text">
+              <div class="cal-option-name">Google Calendar</div>
+              <div class="cal-option-sub">Android, Gmail, Web</div>
+            </div>
+          </a>
+          <a class="cal-option" href="#" onclick="addToOutlookCal(); return false;">
+            <svg viewBox="0 0 24 24" fill="#0078D4"><path d="M24 7.387v10.478c0 .23-.08.424-.238.576-.158.154-.352.23-.58.23h-8.547v-6.959l1.6 1.229c.102.086.227.127.376.127.14 0 .26-.04.363-.12l.062-.054 5.61-4.354v-.002l.35-.27c.068-.053.123-.118.166-.195a.476.476 0 0 0 .066-.246v-.038c0-.07-.014-.138-.042-.203a.545.545 0 0 0-.288-.298.57.57 0 0 0-.248-.056H.818c-.227 0-.42.077-.58.23A.768.768 0 0 0 0 7.387v10.478c0 .23.08.424.238.576.16.154.353.23.58.23h8.547V11.71H.818V7.387h22.364zM7.635 12.801v4.99c0 .234-.083.432-.248.59a.82.82 0 0 1-.598.238H.819a.81.81 0 0 1-.58-.231.778.778 0 0 1-.239-.576v-4.99h7.635v-.021zm6.182-9.472L24 7.387v.002l-10.183 7.93-10.182-7.93V3.33h10.182z"/></svg>
+            <div class="cal-option-text">
+              <div class="cal-option-name">Outlook Calendar</div>
+              <div class="cal-option-sub">Microsoft 365, Outlook.com</div>
+            </div>
+          </a>
+          <a class="cal-option" href="#" id="icsLink" download="yiming-fiona-wedding.ics">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <div class="cal-option-text">
+              <div class="cal-option-name">Download .ics File</div>
+              <div class="cal-option-sub">Works with any calendar app</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="success-msg" id="successMsg">
+        <div class="success-icon">🎉</div>
+        <div class="success-text">Date saved to your calendar!</div>
+        <div class="success-sub">We can't wait to celebrate with you!</div>
+      </div>
+
+      <!-- Quick RSVP -->
+      <div class="rsvp-section">
+        <div class="rsvp-header">
+          <span class="rsvp-icon">💌</span>
+          <div class="rsvp-title">Quick RSVP</div>
+        </div>
+        <div class="rsvp-sub">Let us know you'll be there (so we can order enough cake)!</div>
+
+        <form class="mini-form" id="rsvpForm">
+          <div class="mf-group">
+            <label class="mf-label">Your Name</label>
+            <input class="mf-input" type="text" name="name" placeholder="First and Last Name" required>
+          </div>
+          <div class="mf-group">
+            <label class="mf-label">Email</label>
+            <div class="email-wrap">
+              <input class="mf-input" type="email" name="email" id="emailInput" placeholder="your@email.com" required autocomplete="off">
+              <div class="email-suggestions" id="emailSuggestions"></div>
+            </div>
+          </div>
+          <div class="mf-group">
+            <label class="mf-label">Party Size</label>
+            <div class="stepper">
+              <button type="button" class="stepper-btn disabled" id="stepDown" onclick="stepParty(-1)">-</button>
+              <div class="stepper-display">
+                <span class="stepper-num" id="stepperNum">1</span>
+                <span class="stepper-label">guest(s)</span>
+              </div>
+              <button type="button" class="stepper-btn" id="stepUp" onclick="stepParty(1)">+</button>
+              <span class="stepper-hint">Including yourself</span>
+            </div>
+            <input type="hidden" name="partySize" id="partySize" value="1">
+          </div>
+          <div class="mf-group">
+            <label class="mf-label">Will you join us?</label>
+            <div class="att-toggle">
+              <div class="att-btn" onclick="pickAtt(this,'yes')">🎉 Count me in!</div>
+              <div class="att-btn" onclick="pickAtt(this,'no')">😢 Can't make it</div>
+            </div>
+            <input type="hidden" name="attendance" id="attVal" required>
+          </div>
+          <div class="mf-group">
+            <label class="mf-label">Note to the Couple <span class="mf-optional">(optional)</span></label>
+            <textarea class="mf-textarea" name="notes" placeholder="Any message, song requests, or well wishes!"></textarea>
+          </div>
+          <button type="submit" class="rsvp-submit" id="rsvpBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Send RSVP
+          </button>
+        </form>
+
+        <div class="rsvp-result success" id="rsvpSuccess">
+          <div class="rsvp-result-icon">🥂</div>
+          <div class="rsvp-result-title">RSVP Confirmed!</div>
+          <div class="rsvp-result-detail" id="rsvpSuccessDetail"></div>
+          <div class="rsvp-result-actions">
+            <button class="rsvp-again-btn" onclick="resetRsvp()">Submit Another RSVP</button>
+          </div>
+        </div>
+
+        <div class="rsvp-result error" id="rsvpError">
+          <div class="rsvp-result-icon">😥</div>
+          <div class="rsvp-result-title">Something Went Wrong</div>
+          <div class="rsvp-result-detail">We couldn't submit your RSVP right now. Please try again or send us an email instead.</div>
+          <div class="rsvp-result-actions">
+            <button class="rsvp-retry-btn" onclick="retryRsvp()">Try Again</button>
+            <button class="rsvp-email-btn" onclick="emailFallback()">Send via Email</button>
+          </div>
+        </div>
+      </div>
+      <!-- Invitation Countdown -->
+      <div class="invite-cd-section" id="inviteSection">
+        <div class="invite-cd-header">
+          <span class="invite-cd-icon">📬</span>
+          <div class="invite-cd-title">Full Invitation Coming Soon</div>
+        </div>
+        <div class="invite-cd-sub">Bookmark this page & revisit for the complete wedding details!</div>
+        <div class="mini-cd invite-cd" id="inviteCountdown">
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-d">--</div><div class="mini-cd-label">Days</div></div>
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-h">--</div><div class="mini-cd-label">Hours</div></div>
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-m">--</div><div class="mini-cd-label">Mins</div></div>
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-s">--</div><div class="mini-cd-label">Secs</div></div>
+        </div>
+        <div class="invite-cd-note">We'll update this page with all the details — <a href="javascript:void(0)" onclick="bookmarkReminder()">save it now</a> so you don't miss out!</div>
+        <div class="invite-arrived" id="inviteArrived">
+          <div class="invite-arrived-icon">🎊</div>
+          <div class="invite-arrived-text">Invitations are here!</div>
+          <div class="invite-arrived-sub">Check your email and explore our wedding website for full details.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-link">
+    <a href="../index-v4.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Visit Our Wedding Website
+    </a>
+  </div>
+</main>
+
+<script>
+(function(){
+'use strict';
+
+// ═══════════════════════════════════════
+// Event Details
+// ═══════════════════════════════════════
+const EVENT = {
+  title: "Yiming & Fiona's Wedding",
+  date: '2026-05-03',
+  startTime: '16:00',
+  endTime: '23:00',
+  timezone: 'America/Chicago',
+  location: 'Hummingbird House, 12805 Arroyo Doble Dr, Manchaca, TX 78652',
+  description: "Join us as we celebrate our wedding day! We can't wait to share this special moment with you.\\n\\nVenue: Hummingbird House\\nAddress: 12805 Arroyo Doble Dr, Manchaca, TX 78652\\n\\nFor more details, visit our wedding website: yimingfiona.com",
+  url: 'https://yimingfiona.com'
+};
+
+const startDate = new Date('2026-05-03T16:00:00-05:00');
+const endDate = new Date('2026-05-03T23:00:00-05:00');
+
+// ═══════════════════════════════════════
+// RSVP Backend — Google Sheets via Apps Script
+// ═══════════════════════════════════════
+// HOW TO SET UP (takes ~5 minutes):
+// 1. Go to https://docs.google.com/spreadsheets and create a new spreadsheet
+// 2. Name it "Wedding RSVPs" and add headers in Row 1:
+//    A1: Timestamp | B1: Name | C1: Email | D1: Attendance | E1: Party Size | F1: Notes | G1: Source
+// 3. Click Extensions → Apps Script
+// 4. Delete any code and paste this:
+//
+//    function doPost(e) {
+//      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+//      var data = JSON.parse(e.postData.contents);
+//      sheet.appendRow([
+//        new Date(),
+//        data.name,
+//        data.email,
+//        data.attendance,
+//        data.partySize,
+//        data.notes || '',
+//        data.source
+//      ]);
+//      return ContentService
+//        .createTextOutput(JSON.stringify({result:'success'}))
+//        .setMimeType(ContentService.MimeType.JSON);
+//    }
+//
+// 5. Click Deploy → New deployment
+// 6. Choose type: Web app
+// 7. Set "Execute as" to your account, "Who has access" to "Anyone"
+// 8. Click Deploy, authorize when prompted, and copy the Web app URL
+// 9. Paste the URL below replacing the placeholder:
+// NOTE: If you already deployed, go to Deploy → Manage deployments → Edit → New version to update
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYjMPPoKcD9i6WFjEQeKErk9E6BBlWTXlG-CzO_ADC1kVe-ue6ET-A9ZCkOjiyGeNR7g/exec';
+
+function formatDateGoogle(date) {
+  return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+}
+
+function formatDateICS(date) {
+  return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '').slice(0, -1);
+}
+
+// Generate ICS content
+function generateICS() {
+  return `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Yiming & Fiona Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260503T160000
+DTEND:20260503T230000
+DTSTAMP:${formatDateICS(new Date())}Z
+UID:yiming-fiona-wedding-may3-2026@yimingfiona.com
+SUMMARY:${EVENT.title}
+DESCRIPTION:Join us as we celebrate our wedding day!\\n\\nVenue: Hummingbird House\\nAddress: 12805 Arroyo Doble Dr\\, Manchaca\\, TX 78652\\n\\nWebsite: yimingfiona.com
+LOCATION:Hummingbird House\\, 12805 Arroyo Doble Dr\\, Manchaca\\, TX 78652
+URL:https://yimingfiona.com
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Yiming & Fiona's Wedding is tomorrow!
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Yiming & Fiona's Wedding is in one week!
+END:VALARM
+END:VEVENT
+END:VCALENDAR`;
+}
+
+// Set up ICS download
+const icsContent = generateICS();
+const icsBlob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+const icsUrl = URL.createObjectURL(icsBlob);
+document.getElementById('icsLink').href = icsUrl;
+document.getElementById('icsLink').onclick = function(e) {
+  e.preventDefault();
+  downloadICS();
+};
+
+// Calendar functions
+window.addToAppleCal = function() {
+  downloadICS();
+  showSuccess();
+  closeDropdown();
+};
+
+window.addToGoogleCal = function() {
+  const start = formatDateGoogle(startDate);
+  const end = formatDateGoogle(endDate);
+  const details = encodeURIComponent("Join us as we celebrate our wedding day!\n\nVenue: Hummingbird House\nAddress: 12805 Arroyo Doble Dr, Manchaca, TX 78652\n\nWebsite: yimingfiona.com");
+  const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT.title)}&dates=${start}/${end}&details=${details}&location=${encodeURIComponent(EVENT.location)}&sf=true&output=xml`;
+  window.open(url, '_blank');
+  showSuccess();
+  closeDropdown();
+};
+
+window.addToOutlookCal = function() {
+  const start = startDate.toISOString();
+  const end = endDate.toISOString();
+  const details = encodeURIComponent("Join us as we celebrate our wedding day!\n\nVenue: Hummingbird House\nAddress: 12805 Arroyo Doble Dr, Manchaca, TX 78652\n\nWebsite: yimingfiona.com");
+  const url = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(EVENT.title)}&startdt=${start}&enddt=${end}&body=${details}&location=${encodeURIComponent(EVENT.location)}`;
+  window.open(url, '_blank');
+  showSuccess();
+  closeDropdown();
+};
+
+window.downloadICS = function() {
+  const link = document.createElement('a');
+  link.href = icsUrl;
+  link.download = 'yiming-fiona-wedding.ics';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showSuccess();
+  closeDropdown();
+};
+
+window.toggleCalDropdown = function() {
+  document.getElementById('calDropdown').classList.toggle('open');
+};
+
+function closeDropdown() {
+  document.getElementById('calDropdown').classList.remove('open');
+}
+
+document.addEventListener('click', function(e) {
+  const dropdown = document.getElementById('calDropdown');
+  if (!dropdown.contains(e.target)) closeDropdown();
+});
+
+function showSuccess() {
+  document.getElementById('successMsg').classList.add('show');
+  showToast('📅', 'Date added to your calendar!');
+  // Celebration burst
+  for (let i = 0; i < 20; i++) setTimeout(mkFloat, i * 80);
+}
+
+function showToast(icon, msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastIcon').textContent = icon;
+  document.getElementById('toastMsg').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 4000);
+}
+
+// ═══════════════════════════════════════
+// Countdown
+// ═══════════════════════════════════════
+const W = new Date('2026-05-03T16:00:00-05:00');
+function tick() {
+  const d = Math.max(0, W - Date.now());
+  document.getElementById('cd-d').textContent = Math.floor(d / 864e5);
+  document.getElementById('cd-h').textContent = String(Math.floor((d % 864e5) / 36e5)).padStart(2, '0');
+  document.getElementById('cd-m').textContent = String(Math.floor((d % 36e5) / 6e4)).padStart(2, '0');
+  document.getElementById('cd-s').textContent = String(Math.floor((d % 6e4) / 1e3)).padStart(2, '0');
+}
+tick();
+setInterval(tick, 1000);
+
+// ═══════════════════════════════════════
+// Floating Icons (paws, hearts, sparkles)
+// ═══════════════════════════════════════
+const icons = ['🐾', '💕', '🐶', '💖', '✨', '💗', '🌸', '💝', '🐕', '💞', '🦋', '🌷'];
+
+window.mkFloat = function() {
+  const el = document.createElement('div');
+  el.className = 'floater';
+  el.innerHTML = icons[Math.random() * icons.length | 0];
+  const dur = 8 + Math.random() * 6;
+  const rot = (Math.random() - 0.5) * 360;
+  const fs = (16 + Math.random() * 14) + 'px';
+  const pk = 0.35 + Math.random() * 0.25;
+  el.style.left = Math.random() * innerWidth + 'px';
+  el.style.bottom = '-40px';
+  el.style.setProperty('--dur', dur + 's');
+  el.style.setProperty('--rot', rot + 'deg');
+  el.style.setProperty('--fs', fs);
+  el.style.setProperty('--pk', pk);
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), dur * 1000);
+};
+
+// Spawn floaters
+setInterval(mkFloat, 2000);
+for (let i = 0; i < 5; i++) setTimeout(mkFloat, i * 300);
+
+// ═══════════════════════════════════════
+// Sparkle particles on background
+// ═══════════════════════════════════════
+function mkSparkle() {
+  const el = document.createElement('div');
+  el.className = 'sparkle';
+  el.style.left = Math.random() * 100 + '%';
+  el.style.top = Math.random() * 100 + '%';
+  el.style.setProperty('--dur', (3 + Math.random() * 4) + 's');
+  el.style.setProperty('--op', 0.3 + Math.random() * 0.4);
+  el.style.animationDelay = Math.random() * 5 + 's';
+  document.querySelector('.bg-canvas').appendChild(el);
+}
+for (let i = 0; i < 30; i++) mkSparkle();
+
+// ═══════════════════════════════════════
+// Email Autocomplete
+// ═══════════════════════════════════════
+var EMAIL_DOMAINS = ['gmail.com','yahoo.com','outlook.com','hotmail.com','icloud.com','aol.com','protonmail.com','live.com','me.com','msn.com','ymail.com','qq.com','163.com'];
+var emailInput = document.getElementById('emailInput');
+var emailSug = document.getElementById('emailSuggestions');
+var sugIndex = -1;
+
+emailInput.addEventListener('input', function() {
+  var val = this.value;
+  var atPos = val.indexOf('@');
+  if (atPos < 1) { emailSug.classList.remove('open'); return; }
+  var prefix = val.substring(0, atPos);
+  var typed = val.substring(atPos + 1).toLowerCase();
+  var matches = EMAIL_DOMAINS.filter(function(d) { return d.startsWith(typed); });
+  if (!typed && matches.length) matches = EMAIL_DOMAINS.slice(0, 6);
+  if (!matches.length || (matches.length === 1 && matches[0] === typed)) {
+    emailSug.classList.remove('open'); return;
+  }
+  sugIndex = -1;
+  emailSug.innerHTML = matches.map(function(d) {
+    return '<div class="email-sug-item" data-domain="' + d + '">' + prefix + '@<span>' + d + '</span></div>';
+  }).join('');
+  emailSug.classList.add('open');
+});
+
+emailSug.addEventListener('click', function(e) {
+  var item = e.target.closest('.email-sug-item');
+  if (!item) return;
+  emailInput.value = emailInput.value.substring(0, emailInput.value.indexOf('@') + 1) + item.dataset.domain;
+  emailSug.classList.remove('open');
+  emailInput.focus();
+});
+
+emailInput.addEventListener('keydown', function(e) {
+  var items = emailSug.querySelectorAll('.email-sug-item');
+  if (!items.length || !emailSug.classList.contains('open')) return;
+  if (e.key === 'ArrowDown') { e.preventDefault(); sugIndex = Math.min(sugIndex + 1, items.length - 1); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); sugIndex = Math.max(sugIndex - 1, 0); }
+  else if ((e.key === 'Enter' || e.key === 'Tab') && sugIndex >= 0) {
+    e.preventDefault();
+    emailInput.value = emailInput.value.substring(0, emailInput.value.indexOf('@') + 1) + items[sugIndex].dataset.domain;
+    emailSug.classList.remove('open');
+    return;
+  } else { return; }
+  items.forEach(function(it, i) { it.classList.toggle('active', i === sugIndex); });
+});
+
+emailInput.addEventListener('blur', function() {
+  setTimeout(function() { emailSug.classList.remove('open'); }, 150);
+});
+
+// ═══════════════════════════════════════
+// RSVP — Party Size Stepper
+// ═══════════════════════════════════════
+let partyCount = 1;
+
+window.stepParty = function(dir) {
+  partyCount = Math.min(20, Math.max(1, partyCount + dir));
+  const numEl = document.getElementById('stepperNum');
+  numEl.textContent = partyCount;
+  document.getElementById('partySize').value = partyCount;
+
+  // Pop animation
+  numEl.classList.remove('pop');
+  void numEl.offsetWidth;
+  numEl.classList.add('pop');
+  setTimeout(() => numEl.classList.remove('pop'), 200);
+
+  // Update label
+  numEl.parentElement.querySelector('.stepper-label').textContent = partyCount === 1 ? 'guest' : 'guests';
+
+  // Toggle disabled state on buttons
+  document.getElementById('stepDown').classList.toggle('disabled', partyCount <= 1);
+  document.getElementById('stepUp').classList.toggle('disabled', partyCount >= 20);
+};
+
+// ═══════════════════════════════════════
+// RSVP — Attendance & Form
+// ═══════════════════════════════════════
+window.pickAtt = function(el, val) {
+  document.querySelectorAll('.att-btn').forEach(b => b.classList.remove('sel-yes', 'sel-no'));
+  el.classList.add(val === 'yes' ? 'sel-yes' : 'sel-no');
+  document.getElementById('attVal').value = val === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines';
+};
+
+let lastSubmitData = null;
+
+document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const att = document.getElementById('attVal').value;
+  if (!att) {
+    document.querySelector('.att-toggle').style.boxShadow = '0 0 0 2px var(--ro)';
+    showToast('👆', 'Please select whether you can attend');
+    setTimeout(() => document.querySelector('.att-toggle').style.boxShadow = '', 2000);
+    return;
+  }
+
+  const btn = document.getElementById('rsvpBtn');
+  btn.classList.add('loading');
+  btn.innerHTML = '<span class="spinner"></span> Sending...';
+
+  lastSubmitData = {
+    name: this.elements.name.value,
+    email: this.elements.email.value,
+    attendance: att,
+    partySize: partyCount,
+    notes: this.elements.notes.value || '',
+    source: 'Save the Date Page'
+  };
+
+  try {
+    if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+      throw new Error('Google Script URL not configured');
+    }
+
+    await fetch(GOOGLE_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(lastSubmitData)
+    });
+
+    // Show success panel
+    var isAccepting = att === 'Joyfully Accepts';
+    var detailHtml = 'Thank you, <strong>' + lastSubmitData.name + '</strong>!';
+    if (isAccepting) {
+      detailHtml += '<br>We\'ve saved your spot for <strong>' + partyCount + ' guest' + (partyCount > 1 ? 's' : '') + '</strong>.';
+      detailHtml += '<br><br>We can\'t wait to celebrate with you!';
+    } else {
+      detailHtml += '<br>We\'re sorry you can\'t make it. You\'ll be missed!';
+    }
+    document.getElementById('rsvpSuccessDetail').innerHTML = detailHtml;
+
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpSuccess').classList.add('show');
+    showToast(isAccepting ? '🎉' : '💛', isAccepting ? "RSVP confirmed! We're so excited!" : "RSVP received. We'll miss you!");
+    for (let i = 0; i < 15; i++) setTimeout(mkFloat, i * 60);
+  } catch (err) {
+    // Show error panel
+    document.getElementById('rsvpForm').style.display = 'none';
+    document.getElementById('rsvpError').classList.add('show');
+    showToast('😥', 'Submission failed. Please try again.');
+  }
+});
+
+window.resetRsvp = function() {
+  var form = document.getElementById('rsvpForm');
+  form.reset();
+  form.style.display = '';
+  partyCount = 1;
+  document.getElementById('stepperNum').textContent = '1';
+  document.getElementById('stepperNum').parentElement.querySelector('.stepper-label').textContent = 'guest';
+  document.getElementById('partySize').value = 1;
+  document.getElementById('stepDown').classList.add('disabled');
+  document.getElementById('stepUp').classList.remove('disabled');
+  document.querySelectorAll('.att-btn').forEach(b => b.classList.remove('sel-yes', 'sel-no'));
+  document.getElementById('rsvpSuccess').classList.remove('show');
+  document.getElementById('rsvpError').classList.remove('show');
+  var btn = document.getElementById('rsvpBtn');
+  btn.classList.remove('loading', 'ok');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send RSVP';
+};
+
+window.retryRsvp = function() {
+  document.getElementById('rsvpError').classList.remove('show');
+  document.getElementById('rsvpForm').style.display = '';
+  var btn = document.getElementById('rsvpBtn');
+  btn.classList.remove('loading');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send RSVP';
+};
+
+window.emailFallback = function() {
+  var d = lastSubmitData || {};
+  var subj = encodeURIComponent('Wedding RSVP: ' + (d.name || ''));
+  var lines = [
+    'Name: ' + (d.name || ''),
+    'Email: ' + (d.email || ''),
+    'Attendance: ' + (d.attendance || ''),
+    'Party Size: ' + (d.partySize || 1),
+    'Notes: ' + (d.notes || 'None')
+  ];
+  window.location.href = 'mailto:atxyym@gmail.com?subject=' + subj + '&body=' + encodeURIComponent(lines.join('\n'));
+};
+
+// ═══════════════════════════════════════
+// Invitation Countdown
+// ═══════════════════════════════════════
+// Change this date to when you plan to send out formal invitations
+const INVITE_DATE = new Date('2026-03-01T10:00:00-06:00');
+
+function tickInvite() {
+  const diff = Math.max(0, INVITE_DATE - Date.now());
+  if (diff <= 0) {
+    // Invitations are live!
+    document.getElementById('inviteCountdown').style.display = 'none';
+    document.querySelector('.invite-cd-sub').style.display = 'none';
+    document.querySelector('.invite-cd-note').style.display = 'none';
+    document.getElementById('inviteArrived').classList.add('show');
+    return;
+  }
+  document.getElementById('inv-d').textContent = Math.floor(diff / 864e5);
+  document.getElementById('inv-h').textContent = String(Math.floor((diff % 864e5) / 36e5)).padStart(2, '0');
+  document.getElementById('inv-m').textContent = String(Math.floor((diff % 36e5) / 6e4)).padStart(2, '0');
+  document.getElementById('inv-s').textContent = String(Math.floor((diff % 6e4) / 1e3)).padStart(2, '0');
+}
+tickInvite();
+setInterval(tickInvite, 1000);
+
+window.bookmarkReminder = function() {
+  if (navigator.share) {
+    navigator.share({ title: "Yiming & Fiona's Wedding", url: window.location.href });
+  } else {
+    // Copy URL to clipboard
+    navigator.clipboard.writeText(window.location.href).then(function() {
+      showToast('🔗', 'Link copied! Save it to revisit later.');
+    }).catch(function() {
+      showToast('🔗', 'Bookmark this page: ' + window.location.href);
+    });
+  }
+};
+
+})();
+</script>
+</body>
+</html>

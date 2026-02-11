@@ -1,0 +1,28 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Yiming & Fiona Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260503T160000
+DTEND:20260503T230000
+DTSTAMP:20250210T000000Z
+UID:yiming-fiona-wedding-may3-2026@yimingfiona.com
+SUMMARY:Yiming & Fiona's Wedding
+DESCRIPTION:Join us as we celebrate our wedding day!\n\nVenue: Hummingbird House\nAddress: 12805 Arroyo Doble Dr\, Manchaca\, TX 78652\n\nWebsite: yimingfiona.com
+LOCATION:Hummingbird House\, 12805 Arroyo Doble Dr\, Manchaca\, TX 78652
+URL:https://yimingfiona.com
+STATUS:CONFIRMED
+SEQUENCE:0
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Yiming & Fiona's Wedding is tomorrow!
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-P7D
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Yiming & Fiona's Wedding is in one week!
+END:VALARM
+END:VEVENT
+END:VCALENDAR

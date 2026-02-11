@@ -13,18 +13,18 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#1e1e24;
-  --bgc:rgba(30,30,36,0.85);
-  --sur:rgba(255,255,255,0.08);
-  --surh:rgba(255,255,255,0.14);
+  --bgc:rgba(30,30,36,0.88);
+  --sur:rgba(255,255,255,0.10);
+  --surh:rgba(255,255,255,0.16);
   --tx:#ffffff;
-  --txm:rgba(255,255,255,0.75);
-  --txl:rgba(255,255,255,0.45);
-  --ac:#e8d4a8;
-  --acl:#f5e6c8;
-  --ro:#f4b8c0;
+  --txm:rgba(255,255,255,0.88);
+  --txl:rgba(255,255,255,0.65);
+  --ac:#f0ddb8;
+  --acl:#f8ecd8;
+  --ro:#f8c4cc;
   --ros:#ffd6dc;
-  --sa:#b8e0b0;
-  --lav:#d4c4f0;
+  --sa:#c8f0c0;
+  --lav:#e0d4f8;
   --rs:14px;--rm:24px;--rl:32px;--rxl:40px;
   --eo:cubic-bezier(0.16,1,0.3,1);
   --es:cubic-bezier(0.34,1.56,0.64,1);
@@ -96,27 +96,27 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
   50%{opacity:.1;transform:scale(1.02)}
 }
 
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ac);margin-bottom:1.2rem;padding:6px 16px;background:rgba(232,212,168,0.1);border-radius:980px;border:.5px solid rgba(232,212,168,0.2)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:1.2rem;padding:8px 18px;background:rgba(232,212,168,0.12);border-radius:980px;border:.5px solid rgba(232,212,168,0.25)}
 .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--ro);animation:dotPulse 2s ease-in-out infinite}
 @keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
 
 .names{font-family:'Great Vibes',cursive;font-size:clamp(3rem,9vw,4.5rem);line-height:1.1;margin-bottom:.2rem;background:linear-gradient(135deg,#fff 0%,var(--acl) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-.tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--txm);margin-bottom:.5rem}
+.tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--tx);margin-bottom:.5rem}
 
-.tagline-fun{font-size:.78rem;color:var(--txl);margin-bottom:1.5rem}
+.tagline-fun{font-size:.88rem;color:var(--txm);margin-bottom:1.5rem}
 
 .divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--ac),transparent);margin:0 auto 1.5rem;border-radius:2px}
 
 .date-big{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,2.8rem);font-weight:600;letter-spacing:.02em;margin-bottom:.2rem;text-shadow:0 2px 20px rgba(232,212,168,0.3)}
 
-.date-day{font-size:.8rem;font-weight:400;color:var(--txm);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.8rem}
+.date-day{font-size:.9rem;font-weight:400;color:var(--txm);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem}
 
 .venue-section{background:rgba(255,255,255,0.04);border-radius:var(--rm);padding:1.2rem 1.5rem;margin-bottom:1.8rem;border:.5px solid rgba(255,255,255,0.06)}
 
-.venue-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:500;margin-bottom:.4rem;color:var(--acl)}
+.venue-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;margin-bottom:.5rem;color:var(--acl)}
 
-.venue-address{font-size:.8rem;font-weight:300;color:var(--txm);line-height:1.5}
+.venue-address{font-size:.9rem;font-weight:400;color:var(--txm);line-height:1.6}
 
 .venue-address a{color:var(--txm);text-decoration:none;border-bottom:1px dotted var(--txl);transition:all .3s}
 .venue-address a:hover{color:var(--ac);border-color:var(--ac)}
@@ -125,12 +125,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .mini-cd{display:flex;justify-content:center;gap:1rem;margin-bottom:2rem}
 .mini-cd-item{text-align:center;min-width:52px}
 .mini-cd-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:500;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--txm) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.mini-cd-label{font-size:.5rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--txl);margin-top:.4rem}
+.mini-cd-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--txl);margin-top:.4rem}
 
 /* Calendar dropdown */
 .cal-dropdown{position:relative;width:100%;margin-bottom:.8rem}
 
-.cal-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;width:100%;padding:1rem 1.5rem;background:linear-gradient(135deg,var(--ac) 0%,#d4c090 100%);color:var(--bg);border-radius:980px;font-size:.82rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;transition:all .4s var(--eo);box-shadow:0 4px 20px rgba(232,212,168,0.3)}
+.cal-btn{display:flex;align-items:center;justify-content:center;gap:.7rem;width:100%;padding:1rem 1.5rem;background:linear-gradient(135deg,var(--ac) 0%,#d4c090 100%);color:var(--bg);border-radius:980px;font-size:.9rem;font-weight:600;letter-spacing:.04em;cursor:pointer;border:none;transition:all .4s var(--eo);box-shadow:0 4px 20px rgba(232,212,168,0.3)}
 .cal-btn:hover{transform:translateY(-2px) scale(1.01);box-shadow:0 8px 30px rgba(232,212,168,0.4)}
 .cal-btn:active{transform:scale(.98)}
 .cal-btn svg{width:18px;height:18px}
@@ -142,8 +142,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .cal-option:hover{background:var(--sur)}
 .cal-option svg{width:22px;height:22px;flex-shrink:0}
 .cal-option-text{text-align:left}
-.cal-option-name{font-size:.85rem;font-weight:500}
-.cal-option-sub{font-size:.65rem;color:var(--txl);margin-top:1px}
+.cal-option-name{font-size:.95rem;font-weight:500}
+.cal-option-sub{font-size:.75rem;color:var(--txl);margin-top:2px}
 
 /* Success state */
 .success-msg{display:none;flex-direction:column;align-items:center;gap:.8rem;padding:1.2rem;background:rgba(184,224,176,0.1);border-radius:var(--rm);margin-top:1rem;border:.5px solid rgba(184,224,176,0.2);animation:successPop .5s var(--es)}
@@ -151,32 +151,32 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 @keyframes successPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
 .success-icon{font-size:2rem;animation:bounce 1s ease infinite}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.success-text{font-size:.9rem;font-weight:500;color:var(--sa)}
-.success-sub{font-size:.72rem;color:var(--txl)}
+.success-text{font-size:1rem;font-weight:500;color:var(--sa)}
+.success-sub{font-size:.85rem;color:var(--txm)}
 
 /* RSVP section */
 .rsvp-section{margin-top:2rem;padding-top:2rem;border-top:.5px solid rgba(255,255,255,0.08)}
 
 .rsvp-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.5rem}
-.rsvp-icon{font-size:1.2rem}
-.rsvp-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500}
+.rsvp-icon{font-size:1.4rem}
+.rsvp-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500}
 
-.rsvp-sub{font-size:.75rem;color:var(--txl);margin-bottom:1.5rem}
+.rsvp-sub{font-size:.88rem;color:var(--txm);margin-bottom:1.5rem}
 
 .mini-form{text-align:left}
 .mf-group{margin-bottom:1.1rem}
-.mf-label{display:block;font-size:.58rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--txm);margin-bottom:.4rem}
-.mf-input{width:100%;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.88rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.08);border-radius:var(--rs);outline:none;transition:all .3s ease}
+.mf-label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tx);margin-bottom:.5rem}
+.mf-input{width:100%;padding:.85rem 1rem;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rs);outline:none;transition:all .3s ease}
 .mf-input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(232,212,168,0.15);background:var(--surh)}
 .mf-input::placeholder{color:var(--txl)}
 
 .att-toggle{display:flex;gap:.5rem}
-.att-btn{flex:1;padding:.75rem;text-align:center;background:var(--sur);border:.5px solid rgba(255,255,255,0.08);border-radius:var(--rs);font-size:.75rem;font-weight:500;color:var(--txm);cursor:pointer;transition:all .35s var(--eo)}
+.att-btn{flex:1;padding:.85rem;text-align:center;background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rs);font-size:.9rem;font-weight:500;color:var(--tx);cursor:pointer;transition:all .35s var(--eo)}
 .att-btn:hover{background:var(--surh);color:var(--tx)}
 .att-btn.sel-yes{background:rgba(184,224,176,0.15);border-color:var(--sa);color:var(--sa)}
 .att-btn.sel-no{background:rgba(244,184,192,0.15);border-color:var(--ro);color:var(--ro)}
 
-.rsvp-submit{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:.9rem;background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.1);border-radius:980px;font-size:.8rem;font-weight:500;cursor:pointer;transition:all .4s var(--eo);margin-top:1.2rem}
+.rsvp-submit{display:flex;align-items:center;justify-content:center;gap:.6rem;width:100%;padding:1rem;background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.12);border-radius:980px;font-size:.9rem;font-weight:500;cursor:pointer;transition:all .4s var(--eo);margin-top:1.2rem}
 .rsvp-submit:hover{background:var(--surh);transform:translateY(-1px)}
 .rsvp-submit:active{transform:scale(.98)}
 .rsvp-submit svg{width:16px;height:16px}
@@ -184,12 +184,12 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 
 /* Footer */
 .footer-link{margin-top:2rem;text-align:center}
-.footer-link a{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--txl);text-decoration:none;padding:.6rem 1.2rem;border-radius:980px;background:rgba(255,255,255,0.04);border:.5px solid rgba(255,255,255,0.06);transition:all .3s}
+.footer-link a{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--txm);text-decoration:none;padding:.7rem 1.4rem;border-radius:980px;background:rgba(255,255,255,0.06);border:.5px solid rgba(255,255,255,0.1);transition:all .3s}
 .footer-link a:hover{color:var(--ac);background:rgba(255,255,255,0.08);border-color:rgba(232,212,168,0.2)}
 .footer-link a svg{width:14px;height:14px}
 
 /* Toast */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:100;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);color:var(--tx);padding:.9rem 1.6rem;border-radius:980px;box-shadow:0 10px 40px rgba(0,0,0,.5);font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:.6rem;opacity:0;transition:all .5s var(--es);border:.5px solid rgba(255,255,255,0.1)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:100;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);color:var(--tx);padding:1rem 1.8rem;border-radius:980px;box-shadow:0 10px 40px rgba(0,0,0,.5);font-size:.95rem;font-weight:500;display:flex;align-items:center;gap:.7rem;opacity:0;transition:all .5s var(--es);border:.5px solid rgba(255,255,255,0.12)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
 /* Party size stepper */
@@ -201,34 +201,34 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .stepper-display{display:flex;flex-direction:column;align-items:center;min-width:48px}
 .stepper-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--acl) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:transform .2s var(--es)}
 .stepper-num.pop{transform:scale(1.3)}
-.stepper-label{font-size:.58rem;color:var(--txl);margin-top:.25rem;letter-spacing:.08em}
-.stepper-hint{width:100%;text-align:center;font-size:.65rem;color:var(--txl);margin-top:.2rem}
+.stepper-label{font-size:.72rem;color:var(--txm);margin-top:.25rem;letter-spacing:.06em}
+.stepper-hint{width:100%;text-align:center;font-size:.78rem;color:var(--txm);margin-top:.3rem}
 
 /* Email autocomplete */
 .email-wrap{position:relative}
 .email-suggestions{position:absolute;top:100%;left:0;right:0;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border-radius:0 0 var(--rs) var(--rs);box-shadow:0 10px 30px rgba(0,0,0,.4);border:.5px solid rgba(255,255,255,0.1);border-top:none;z-index:30;overflow:hidden;display:none}
 .email-suggestions.open{display:block}
-.email-sug-item{padding:.6rem 1rem;font-size:.82rem;color:var(--txm);cursor:pointer;transition:all .2s ease}
+.email-sug-item{padding:.7rem 1rem;font-size:.9rem;color:var(--tx);cursor:pointer;transition:all .2s ease}
 .email-sug-item:hover,.email-sug-item.active{background:var(--surh);color:var(--ac)}
 .email-sug-item span{color:var(--txl)}
 
 /* Notes */
-.mf-textarea{width:100%;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.82rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.08);border-radius:var(--rs);outline:none;transition:all .3s ease;resize:vertical;min-height:60px;max-height:120px;line-height:1.5}
+.mf-textarea{width:100%;padding:.85rem 1rem;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rs);outline:none;transition:all .3s ease;resize:vertical;min-height:70px;max-height:140px;line-height:1.5}
 .mf-textarea:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(232,212,168,0.15);background:var(--surh)}
 .mf-textarea::placeholder{color:var(--txl)}
-.mf-optional{font-weight:400;color:var(--txl);text-transform:none;letter-spacing:0;font-size:.55rem}
+.mf-optional{font-weight:400;color:var(--txm);text-transform:none;letter-spacing:0;font-size:.68rem}
 
 /* RSVP result states */
 .rsvp-result{display:none;text-align:center;animation:successPop .5s var(--es)}
 .rsvp-result.show{display:block}
 .rsvp-result-icon{font-size:2.8rem;margin-bottom:.8rem}
-.rsvp-result-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:600;margin-bottom:.4rem}
-.rsvp-result-detail{font-size:.78rem;color:var(--txm);line-height:1.6;margin-bottom:1rem}
+.rsvp-result-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem}
+.rsvp-result-detail{font-size:.9rem;color:var(--txm);line-height:1.7;margin-bottom:1rem}
 .rsvp-result-detail strong{color:var(--ac);font-weight:500}
 .rsvp-result.success .rsvp-result-title{color:var(--sa)}
 .rsvp-result.error .rsvp-result-title{color:var(--ro)}
 .rsvp-result-actions{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
-.rsvp-again-btn,.rsvp-retry-btn,.rsvp-email-btn{padding:.65rem 1.2rem;border-radius:980px;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .3s var(--eo);border:none}
+.rsvp-again-btn,.rsvp-retry-btn,.rsvp-email-btn{padding:.75rem 1.4rem;border-radius:980px;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .3s var(--eo);border:none}
 .rsvp-again-btn{background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.1)}
 .rsvp-again-btn:hover{background:var(--surh)}
 .rsvp-retry-btn{background:rgba(244,184,192,0.15);color:var(--ro);border:.5px solid rgba(244,184,192,0.25)}
@@ -244,30 +244,34 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 /* Invitation countdown section */
 .invite-cd-section{margin-top:2rem;padding-top:2rem;border-top:.5px solid rgba(255,255,255,0.08)}
 .invite-cd-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.5rem}
-.invite-cd-icon{font-size:1.2rem}
-.invite-cd-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:500}
-.invite-cd-sub{font-size:.75rem;color:var(--txl);margin-bottom:1.2rem;text-align:center}
+.invite-cd-icon{font-size:1.4rem}
+.invite-cd-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500}
+.invite-cd-sub{font-size:.88rem;color:var(--txm);margin-bottom:1.2rem;text-align:center}
 .invite-cd .mini-cd-num{background:linear-gradient(180deg,var(--acl) 0%,var(--ro) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.invite-cd-note{text-align:center;margin-top:1rem;font-size:.72rem;color:var(--txl)}
+.invite-cd-note{text-align:center;margin-top:1rem;font-size:.85rem;color:var(--txm)}
 .invite-cd-note a{color:var(--ac);text-decoration:none;border-bottom:1px dotted var(--ac)}
 .invite-arrived{display:none;text-align:center;padding:1.2rem;background:rgba(232,212,168,0.08);border-radius:var(--rm);border:.5px solid rgba(232,212,168,0.15)}
 .invite-arrived.show{display:block}
 .invite-arrived-icon{font-size:2rem;margin-bottom:.5rem}
-.invite-arrived-text{font-size:.9rem;font-weight:500;color:var(--ac);margin-bottom:.3rem}
-.invite-arrived-sub{font-size:.72rem;color:var(--txl)}
+.invite-arrived-text{font-size:1rem;font-weight:500;color:var(--ac);margin-bottom:.4rem}
+.invite-arrived-sub{font-size:.88rem;color:var(--txm)}
 
 /* ═══ Responsive ═══ */
 @media(max-width:480px){
   .card{padding:2rem 1.5rem;border-radius:var(--rl)}
   .mini-cd{gap:.6rem}
-  .mini-cd-num{font-size:1.4rem}
-  .mini-cd-item{min-width:44px}
+  .mini-cd-num{font-size:1.5rem}
+  .mini-cd-item{min-width:48px}
+  .mini-cd-label{font-size:.6rem}
   .venue-section{padding:1rem 1.2rem}
-  .att-toggle{flex-direction:column;gap:.4rem}
-  .stepper-btn{width:36px;height:36px;font-size:1rem}
-  .stepper-num{font-size:1.3rem}
+  .att-toggle{flex-direction:column;gap:.5rem}
+  .att-btn{padding:.9rem}
+  .stepper-btn{width:38px;height:38px;font-size:1.1rem}
+  .stepper-num{font-size:1.4rem}
   .rsvp-result-actions{flex-direction:column}
   .rsvp-result-actions button{width:100%}
+  .cal-option-name{font-size:.88rem}
+  .cal-option-sub{font-size:.72rem}
 }
 </style>
 </head>
@@ -335,7 +339,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
             <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
             <div class="cal-option-text">
               <div class="cal-option-name">Google Calendar</div>
-              <div class="cal-option-sub">Android, Gmail, Web</div>
+              <div class="cal-option-sub">Gmail, Web</div>
+            </div>
+          </a>
+          <a class="cal-option" href="#" onclick="addToAndroidCal(); return false;">
+            <svg viewBox="0 0 24 24" fill="#3DDC84"><path d="M17.523 2.262l1.478-1.478a.5.5 0 0 0-.707-.707L16.634 1.74A8.945 8.945 0 0 0 12 .5a8.945 8.945 0 0 0-4.634 1.24L5.706.077a.5.5 0 0 0-.707.707l1.478 1.478A8.984 8.984 0 0 0 3 9v1h18V9a8.984 8.984 0 0 0-3.477-6.738zM8.5 7a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM3 11v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-8H3z"/></svg>
+            <div class="cal-option-text">
+              <div class="cal-option-name">Android Calendar</div>
+              <div class="cal-option-sub">Samsung, Pixel, other Android</div>
             </div>
           </a>
           <a class="cal-option" href="#" onclick="addToOutlookCal(); return false;">
@@ -359,6 +370,27 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         <div class="success-icon">🎉</div>
         <div class="success-text">Date saved to your calendar!</div>
         <div class="success-sub">We can't wait to celebrate with you!</div>
+      </div>
+
+      <!-- Full Invitation Coming Soon -->
+      <div class="invite-cd-section" id="inviteSection">
+        <div class="invite-cd-header">
+          <span class="invite-cd-icon">📬</span>
+          <div class="invite-cd-title">Full Invitation Coming Soon</div>
+        </div>
+        <div class="invite-cd-sub">Bookmark this page & revisit for the complete wedding details!</div>
+        <div class="mini-cd invite-cd" id="inviteCountdown">
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-d">--</div><div class="mini-cd-label">Days</div></div>
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-h">--</div><div class="mini-cd-label">Hours</div></div>
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-m">--</div><div class="mini-cd-label">Mins</div></div>
+          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-s">--</div><div class="mini-cd-label">Secs</div></div>
+        </div>
+        <div class="invite-cd-note">We'll update this page with all the details — <a href="javascript:void(0)" onclick="bookmarkReminder()">save it now</a> so you don't miss out!</div>
+        <div class="invite-arrived" id="inviteArrived">
+          <div class="invite-arrived-icon">🎊</div>
+          <div class="invite-arrived-text">Invitations are here!</div>
+          <div class="invite-arrived-sub">Check your email and explore our wedding website for full details.</div>
+        </div>
       </div>
 
       <!-- Quick RSVP -->
@@ -429,26 +461,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
             <button class="rsvp-retry-btn" onclick="retryRsvp()">Try Again</button>
             <button class="rsvp-email-btn" onclick="emailFallback()">Send via Email</button>
           </div>
-        </div>
-      </div>
-      <!-- Invitation Countdown -->
-      <div class="invite-cd-section" id="inviteSection">
-        <div class="invite-cd-header">
-          <span class="invite-cd-icon">📬</span>
-          <div class="invite-cd-title">Full Invitation Coming Soon</div>
-        </div>
-        <div class="invite-cd-sub">Bookmark this page & revisit for the complete wedding details!</div>
-        <div class="mini-cd invite-cd" id="inviteCountdown">
-          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-d">--</div><div class="mini-cd-label">Days</div></div>
-          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-h">--</div><div class="mini-cd-label">Hours</div></div>
-          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-m">--</div><div class="mini-cd-label">Mins</div></div>
-          <div class="mini-cd-item"><div class="mini-cd-num" id="inv-s">--</div><div class="mini-cd-label">Secs</div></div>
-        </div>
-        <div class="invite-cd-note">We'll update this page with all the details — <a href="javascript:void(0)" onclick="bookmarkReminder()">save it now</a> so you don't miss out!</div>
-        <div class="invite-arrived" id="inviteArrived">
-          <div class="invite-arrived-icon">🎊</div>
-          <div class="invite-arrived-text">Invitations are here!</div>
-          <div class="invite-arrived-sub">Check your email and explore our wedding website for full details.</div>
         </div>
       </div>
     </div>
@@ -570,7 +582,11 @@ document.getElementById('icsLink').onclick = function(e) {
 
 // Calendar functions
 window.addToAppleCal = function() {
-  downloadICS();
+  // Use webcal:// protocol to trigger native calendar app on iOS
+  // This works in both Safari and Chrome on iOS
+  var icsUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'yiming-fiona-wedding.ics';
+  var webcalUrl = icsUrl.replace(/^https?:/, 'webcal:');
+  window.location.href = webcalUrl;
   showSuccess();
   closeDropdown();
 };
@@ -581,6 +597,15 @@ window.addToGoogleCal = function() {
   const details = encodeURIComponent("Join us as we celebrate our wedding day!\n\nVenue: Hummingbird House\nAddress: 12805 Arroyo Doble Dr, Manchaca, TX 78652\n\nWebsite: yimingfiona.com");
   const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT.title)}&dates=${start}/${end}&details=${details}&location=${encodeURIComponent(EVENT.location)}&sf=true&output=xml`;
   window.open(url, '_blank');
+  showSuccess();
+  closeDropdown();
+};
+
+window.addToAndroidCal = function() {
+  // Use webcal:// protocol to trigger native calendar app on Android
+  var icsUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, '') + 'yiming-fiona-wedding.ics';
+  var webcalUrl = icsUrl.replace(/^https?:/, 'webcal:');
+  window.location.href = webcalUrl;
   showSuccess();
   closeDropdown();
 };

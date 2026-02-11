@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Save the Date — Yiming & Fiona | May 3, 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Great+Vibes&family=DM+Serif+Display:ital@0;1&family=Questrial&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -37,38 +37,27 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
    ═══════════════════════════════════════ */
 .bg-canvas{position:fixed;inset:0;z-index:0;overflow:hidden}
 
-/* Aurora blobs */
-.aurora{position:absolute;border-radius:50%;filter:blur(80px);opacity:.4;animation:auroraMove 20s ease-in-out infinite}
-.aurora-1{width:60vw;height:60vw;max-width:600px;max-height:600px;background:linear-gradient(135deg,#f4b8c0 0%,#ffd6dc 50%,#f8c4d0 100%);top:-10%;left:-15%;animation-delay:0s}
-.aurora-2{width:50vw;height:50vw;max-width:500px;max-height:500px;background:linear-gradient(135deg,#b8e0b0 0%,#d0f0c8 50%,#c8e8c0 100%);top:20%;right:-20%;animation-delay:-5s}
-.aurora-3{width:55vw;height:55vw;max-width:550px;max-height:550px;background:linear-gradient(135deg,#e8d4a8 0%,#f5e6c8 50%,#e0d0a0 100%);bottom:-15%;left:20%;animation-delay:-10s}
-.aurora-4{width:45vw;height:45vw;max-width:450px;max-height:450px;background:linear-gradient(135deg,#d4c4f0 0%,#e8d8ff 50%,#c8b8e8 100%);bottom:10%;right:-10%;animation-delay:-15s}
+/* Aurora blobs - optimized */
+.aurora{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;will-change:transform}
+.aurora-1{width:50vw;height:50vw;max-width:500px;max-height:500px;background:linear-gradient(135deg,#f4b8c0 0%,#ffd6dc 100%);top:-10%;left:-15%}
+.aurora-2{width:45vw;height:45vw;max-width:450px;max-height:450px;background:linear-gradient(135deg,#b8e0b0 0%,#d0f0c8 100%);top:20%;right:-20%}
+.aurora-3{width:50vw;height:50vw;max-width:500px;max-height:500px;background:linear-gradient(135deg,#e8d4a8 0%,#f5e6c8 100%);bottom:-15%;left:20%}
+.aurora-4{width:40vw;height:40vw;max-width:400px;max-height:400px;background:linear-gradient(135deg,#d4c4f0 0%,#e8d8ff 100%);bottom:10%;right:-10%}
 
-@keyframes auroraMove{
-  0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}
-  25%{transform:translate(30px,-40px) scale(1.1) rotate(5deg)}
-  50%{transform:translate(-20px,30px) scale(0.95) rotate(-5deg)}
-  75%{transform:translate(40px,20px) scale(1.05) rotate(3deg)}
-}
+/* Sparkle particles - static for performance */
+.sparkle{position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.4);border-radius:50%}
 
-/* Sparkle particles */
-.sparkle{position:absolute;width:4px;height:4px;background:white;border-radius:50%;opacity:0;animation:sparkle var(--dur) ease-in-out infinite}
-@keyframes sparkle{
-  0%,100%{opacity:0;transform:scale(0)}
-  50%{opacity:var(--op);transform:scale(1)}
-}
-
-/* Floating hearts & paws */
-.floater{position:fixed;pointer-events:none;z-index:1;opacity:0;font-size:var(--fs);animation:floatUp var(--dur) ease-out forwards}
+/* Floating hearts & paws - optimized */
+.floater{position:fixed;pointer-events:none;z-index:1;opacity:0;font-size:var(--fs);animation:floatUp var(--dur) linear forwards;will-change:transform,opacity}
 @keyframes floatUp{
-  0%{opacity:0;transform:translateY(0) rotate(0deg) scale(.5)}
-  15%{opacity:var(--pk)}
-  85%{opacity:calc(var(--pk)*.4)}
-  100%{opacity:0;transform:translateY(calc(-100vh - 50px)) rotate(var(--rot)) scale(.2)}
+  0%{opacity:0;transform:translateY(0)}
+  10%{opacity:var(--pk)}
+  90%{opacity:0.15}
+  100%{opacity:0;transform:translateY(-100vh)}
 }
 
-/* Noise texture */
-.noise{position:fixed;inset:0;opacity:.015;pointer-events:none;z-index:2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+/* Noise texture - disabled for performance */
+.noise{display:none}
 
 /* ═══════════════════════════════════════
    Main Content
@@ -76,47 +65,39 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .main{position:relative;z-index:10;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem}
 
 /* Card */
-.card{background:var(--bgc);-webkit-backdrop-filter:blur(40px) saturate(180%);backdrop-filter:blur(40px) saturate(180%);border-radius:var(--rxl);padding:3rem 2.5rem;max-width:460px;width:100%;text-align:center;box-shadow:0 25px 80px rgba(0,0,0,0.4),0 0 0 .5px rgba(255,255,255,0.1) inset;position:relative;overflow:hidden}
+.card{background:var(--bgc);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-radius:var(--rxl);padding:3rem 2.5rem;max-width:460px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.35),0 0 0 .5px rgba(255,255,255,0.1) inset;position:relative;overflow:hidden}
 
-/* Shimmer border effect */
-.card::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--ro),var(--ac),var(--sa),var(--lav),var(--ro));border-radius:calc(var(--rxl) + 2px);z-index:-1;opacity:.5;animation:shimmer 8s linear infinite}
-@keyframes shimmer{
-  0%{filter:hue-rotate(0deg)}
-  100%{filter:hue-rotate(360deg)}
-}
+/* Border gradient effect - static for performance */
+.card::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,var(--ro),var(--ac),var(--sa),var(--lav));border-radius:calc(var(--rxl) + 1px);z-index:-1;opacity:.4}
 
 .card-content{position:relative;z-index:1}
 
-/* Decorative rings */
-.ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.08);pointer-events:none;animation:ringPulse 4s ease-in-out infinite}
-.ring-1{width:150%;height:150%;top:-25%;left:-25%;animation-delay:0s}
-.ring-2{width:180%;height:180%;top:-40%;left:-40%;animation-delay:-2s}
-@keyframes ringPulse{
-  0%,100%{opacity:.3;transform:scale(1)}
-  50%{opacity:.1;transform:scale(1.02)}
-}
+/* Decorative rings - static */
+.ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.06);pointer-events:none;opacity:.25}
+.ring-1{width:150%;height:150%;top:-25%;left:-25%}
+.ring-2{width:180%;height:180%;top:-40%;left:-40%}
 
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ac);margin-bottom:1.2rem;padding:8px 18px;background:rgba(232,212,168,0.12);border-radius:980px;border:.5px solid rgba(232,212,168,0.25)}
-.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--ro);animation:dotPulse 2s ease-in-out infinite}
-@keyframes dotPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--ro)}
 
 .names{font-family:'Great Vibes',cursive;font-size:clamp(3rem,9vw,4.5rem);line-height:1.1;margin-bottom:.2rem;background:linear-gradient(135deg,#fff 0%,var(--acl) 50%,#fff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-.tagline{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--tx);margin-bottom:.5rem}
+.tagline{font-family:'DM Serif Display',serif;font-style:italic;font-size:1.3rem;color:var(--tx);margin-bottom:.6rem;letter-spacing:.01em}
 
-.tagline-fun{font-size:.88rem;color:var(--txm);margin-bottom:1.5rem}
+.tagline-fun{font-family:'Questrial',sans-serif;font-size:.95rem;color:var(--txm);margin-bottom:1.5rem;letter-spacing:.03em}
 
 .divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--ac),transparent);margin:0 auto 1.5rem;border-radius:2px}
 
-.date-big{font-family:'Playfair Display',serif;font-size:clamp(2rem,6vw,2.8rem);font-weight:600;letter-spacing:.02em;margin-bottom:.2rem;text-shadow:0 2px 20px rgba(232,212,168,0.3)}
-
-.date-day{font-size:.9rem;font-weight:400;color:var(--txm);letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.8rem}
+/* Date hero - Apple-inspired elegant design */
+.date-hero{margin-bottom:2rem;text-align:center}
+.date-line{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,7vw,3.2rem);color:var(--tx);letter-spacing:.01em;margin-bottom:.5rem}
+.date-subline{font-family:'Cormorant',serif;font-size:clamp(1.1rem,3.5vw,1.5rem);font-weight:400;font-style:italic;color:var(--acl);letter-spacing:.06em}
 
 .venue-section{background:rgba(255,255,255,0.04);border-radius:var(--rm);padding:1.2rem 1.5rem;margin-bottom:1.8rem;border:.5px solid rgba(255,255,255,0.06)}
 
-.venue-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:500;margin-bottom:.5rem;color:var(--acl)}
+.venue-name{font-family:'DM Serif Display',serif;font-size:1.15rem;margin-bottom:.5rem;color:var(--acl)}
 
-.venue-address{font-size:.9rem;font-weight:400;color:var(--txm);line-height:1.6}
+.venue-address{font-family:'Questrial',sans-serif;font-size:.9rem;color:var(--txm);line-height:1.7}
 
 .venue-address a{color:var(--txm);text-decoration:none;border-bottom:1px dotted var(--txl);transition:all .3s}
 .venue-address a:hover{color:var(--ac);border-color:var(--ac)}
@@ -124,8 +105,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 /* Mini countdown */
 .mini-cd{display:flex;justify-content:center;gap:1rem;margin-bottom:2rem}
 .mini-cd-item{text-align:center;min-width:52px}
-.mini-cd-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:500;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--txm) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.mini-cd-label{font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--txl);margin-top:.4rem}
+.mini-cd-num{font-family:'DM Serif Display',serif;font-size:2rem;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--txm) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mini-cd-label{font-family:'Questrial',sans-serif;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--txl);margin-top:.4rem}
 
 /* Calendar dropdown */
 .cal-dropdown{position:relative;width:100%;margin-bottom:.8rem}
@@ -135,7 +116,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .cal-btn:active{transform:scale(.98)}
 .cal-btn svg{width:18px;height:18px}
 
-.cal-dropdown-content{position:absolute;bottom:calc(100% + 8px);left:0;right:0;background:var(--bgc);-webkit-backdrop-filter:blur(40px);backdrop-filter:blur(40px);border-radius:var(--rm);padding:.6rem;box-shadow:0 -15px 50px rgba(0,0,0,.5);border:.5px solid rgba(255,255,255,0.1);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .35s var(--eo);z-index:20}
+.cal-dropdown-content{position:absolute;bottom:calc(100% + 8px);left:0;right:0;background:rgba(30,30,36,0.95);border-radius:var(--rm);padding:.6rem;box-shadow:0 -10px 40px rgba(0,0,0,.4);border:.5px solid rgba(255,255,255,0.1);opacity:0;visibility:hidden;transform:translateY(10px);transition:all .25s var(--eo);z-index:20}
 .cal-dropdown.open .cal-dropdown-content{opacity:1;visibility:visible;transform:translateY(0)}
 
 .cal-option{display:flex;align-items:center;gap:.8rem;padding:.85rem 1.1rem;border-radius:var(--rs);cursor:pointer;transition:all .25s ease;text-decoration:none;color:var(--tx)}
@@ -149,19 +130,18 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .success-msg{display:none;flex-direction:column;align-items:center;gap:.8rem;padding:1.2rem;background:rgba(184,224,176,0.1);border-radius:var(--rm);margin-top:1rem;border:.5px solid rgba(184,224,176,0.2);animation:successPop .5s var(--es)}
 .success-msg.show{display:flex}
 @keyframes successPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-.success-icon{font-size:2rem;animation:bounce 1s ease infinite}
-@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-.success-text{font-size:1rem;font-weight:500;color:var(--sa)}
-.success-sub{font-size:.85rem;color:var(--txm)}
+.success-icon{font-size:2rem}
+.success-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--sa)}
+.success-sub{font-family:'Questrial',sans-serif;font-size:.88rem;color:var(--txm)}
 
 /* RSVP section */
 .rsvp-section{margin-top:2rem;padding-top:2rem;border-top:.5px solid rgba(255,255,255,0.08)}
 
 .rsvp-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.5rem}
 .rsvp-icon{font-size:1.4rem}
-.rsvp-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500}
+.rsvp-title{font-family:'DM Serif Display',serif;font-size:1.25rem}
 
-.rsvp-sub{font-size:.88rem;color:var(--txm);margin-bottom:1.5rem}
+.rsvp-sub{font-family:'Questrial',sans-serif;font-size:.9rem;color:var(--txm);margin-bottom:1.5rem}
 
 .mini-form{text-align:left}
 .mf-group{margin-bottom:1.1rem}
@@ -182,14 +162,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .rsvp-submit svg{width:16px;height:16px}
 .rsvp-submit.ok{background:rgba(184,224,176,0.2);border-color:var(--sa);color:var(--sa);pointer-events:none}
 
-/* Footer */
-.footer-link{margin-top:2rem;text-align:center}
-.footer-link a{display:inline-flex;align-items:center;gap:.5rem;font-size:.85rem;color:var(--txm);text-decoration:none;padding:.7rem 1.4rem;border-radius:980px;background:rgba(255,255,255,0.06);border:.5px solid rgba(255,255,255,0.1);transition:all .3s}
-.footer-link a:hover{color:var(--ac);background:rgba(255,255,255,0.08);border-color:rgba(232,212,168,0.2)}
-.footer-link a svg{width:14px;height:14px}
 
 /* Toast */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:100;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);color:var(--tx);padding:1rem 1.8rem;border-radius:980px;box-shadow:0 10px 40px rgba(0,0,0,.5);font-size:.95rem;font-weight:500;display:flex;align-items:center;gap:.7rem;opacity:0;transition:all .5s var(--es);border:.5px solid rgba(255,255,255,0.12)}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(100px);z-index:100;background:rgba(30,30,36,0.95);color:var(--tx);padding:1rem 1.8rem;border-radius:980px;box-shadow:0 8px 30px rgba(0,0,0,.4);font-size:.95rem;font-weight:500;display:flex;align-items:center;gap:.7rem;opacity:0;transition:all .4s var(--es);border:.5px solid rgba(255,255,255,0.12)}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
 /* Party size stepper */
@@ -199,14 +174,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .stepper-btn:active{transform:scale(.92)}
 .stepper-btn.disabled{opacity:.25;pointer-events:none}
 .stepper-display{display:flex;flex-direction:column;align-items:center;min-width:48px}
-.stepper-num{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--acl) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:transform .2s var(--es)}
+.stepper-num{font-size:1.6rem;font-weight:700;line-height:1;background:linear-gradient(180deg,#fff 0%,var(--acl) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;transition:transform .2s var(--es)}
 .stepper-num.pop{transform:scale(1.3)}
 .stepper-label{font-size:.72rem;color:var(--txm);margin-top:.25rem;letter-spacing:.06em}
 .stepper-hint{width:100%;text-align:center;font-size:.78rem;color:var(--txm);margin-top:.3rem}
 
 /* Email autocomplete */
 .email-wrap{position:relative}
-.email-suggestions{position:absolute;top:100%;left:0;right:0;background:var(--bgc);-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);border-radius:0 0 var(--rs) var(--rs);box-shadow:0 10px 30px rgba(0,0,0,.4);border:.5px solid rgba(255,255,255,0.1);border-top:none;z-index:30;overflow:hidden;display:none}
+.email-suggestions{position:absolute;top:100%;left:0;right:0;background:rgba(30,30,36,0.95);border-radius:0 0 var(--rs) var(--rs);box-shadow:0 10px 25px rgba(0,0,0,.35);border:.5px solid rgba(255,255,255,0.1);border-top:none;z-index:30;overflow:hidden;display:none}
 .email-suggestions.open{display:block}
 .email-sug-item{padding:.7rem 1rem;font-size:.9rem;color:var(--tx);cursor:pointer;transition:all .2s ease}
 .email-sug-item:hover,.email-sug-item.active{background:var(--surh);color:var(--ac)}
@@ -222,8 +197,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .rsvp-result{display:none;text-align:center;animation:successPop .5s var(--es)}
 .rsvp-result.show{display:block}
 .rsvp-result-icon{font-size:2.8rem;margin-bottom:.8rem}
-.rsvp-result-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;margin-bottom:.5rem}
-.rsvp-result-detail{font-size:.9rem;color:var(--txm);line-height:1.7;margin-bottom:1rem}
+.rsvp-result-title{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:.5rem}
+.rsvp-result-detail{font-family:'Questrial',sans-serif;font-size:.9rem;color:var(--txm);line-height:1.7;margin-bottom:1rem}
 .rsvp-result-detail strong{color:var(--ac);font-weight:500}
 .rsvp-result.success .rsvp-result-title{color:var(--sa)}
 .rsvp-result.error .rsvp-result-title{color:var(--ro)}
@@ -245,20 +220,25 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .invite-cd-section{margin-top:2rem;padding-top:2rem;border-top:.5px solid rgba(255,255,255,0.08)}
 .invite-cd-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.5rem}
 .invite-cd-icon{font-size:1.4rem}
-.invite-cd-title{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:500}
-.invite-cd-sub{font-size:.88rem;color:var(--txm);margin-bottom:1.2rem;text-align:center}
+.invite-cd-title{font-family:'DM Serif Display',serif;font-size:1.25rem}
+.invite-cd-sub{font-family:'Questrial',sans-serif;font-size:.9rem;color:var(--txm);margin-bottom:1.2rem;text-align:center}
 .invite-cd .mini-cd-num{background:linear-gradient(180deg,var(--acl) 0%,var(--ro) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.invite-cd-note{text-align:center;margin-top:1rem;font-size:.85rem;color:var(--txm)}
+.invite-cd-note{font-family:'Questrial',sans-serif;text-align:center;margin-top:1rem;font-size:.85rem;color:var(--txm)}
 .invite-cd-note a{color:var(--ac);text-decoration:none;border-bottom:1px dotted var(--ac)}
 .invite-arrived{display:none;text-align:center;padding:1.2rem;background:rgba(232,212,168,0.08);border-radius:var(--rm);border:.5px solid rgba(232,212,168,0.15)}
 .invite-arrived.show{display:block}
 .invite-arrived-icon{font-size:2rem;margin-bottom:.5rem}
-.invite-arrived-text{font-size:1rem;font-weight:500;color:var(--ac);margin-bottom:.4rem}
-.invite-arrived-sub{font-size:.88rem;color:var(--txm)}
+.invite-arrived-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ac);margin-bottom:.4rem}
+.invite-arrived-sub{font-family:'Questrial',sans-serif;font-size:.88rem;color:var(--txm)}
 
 /* ═══ Responsive ═══ */
 @media(max-width:480px){
-  .card{padding:2rem 1.5rem;border-radius:var(--rl)}
+  .main{padding:0;min-height:100vh;min-height:100dvh}
+  .card{max-width:100%;width:100%;min-height:100vh;min-height:100dvh;border-radius:0;padding:2rem 1.5rem}
+  .card::before{border-radius:0}
+  .ring{display:none}
+  .date-line{font-size:clamp(1.8rem,7vw,2.4rem)}
+  .date-subline{font-size:clamp(.95rem,3.5vw,1.1rem)}
   .mini-cd{gap:.6rem}
   .mini-cd-num{font-size:1.5rem}
   .mini-cd-item{min-width:48px}
@@ -302,8 +282,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 
       <div class="divider"></div>
 
-      <div class="date-big">May 3, 2026</div>
-      <div class="date-day">Sunday at 4:00 in the afternoon</div>
+      <div class="date-hero">
+        <div class="date-line">May 3rd, 2026</div>
+        <div class="date-subline">Sunday · 4:30 PM</div>
+      </div>
 
       <div class="venue-section">
         <div class="venue-name">🌸 Hummingbird House</div>
@@ -466,12 +448,6 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
     </div>
   </div>
 
-  <div class="footer-link">
-    <a href="../index-v4.html">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      Visit Our Wedding Website
-    </a>
-  </div>
 </main>
 
 <script>
@@ -484,7 +460,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 const EVENT = {
   title: "Yiming & Fiona's Wedding",
   date: '2026-05-03',
-  startTime: '16:00',
+  startTime: '16:30',
   endTime: '23:00',
   timezone: 'America/Chicago',
   location: 'Hummingbird House, 12805 Arroyo Doble Dr, Manchaca, TX 78652',
@@ -492,7 +468,7 @@ const EVENT = {
   url: 'https://yimingfiona.com'
 };
 
-const startDate = new Date('2026-05-03T16:00:00-05:00');
+const startDate = new Date('2026-05-03T16:30:00-05:00');
 const endDate = new Date('2026-05-03T23:00:00-05:00');
 
 // ═══════════════════════════════════════
@@ -546,7 +522,7 @@ PRODID:-//Yiming & Fiona Wedding//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-DTSTART:20260503T160000
+DTSTART:20260503T163000
 DTEND:20260503T230000
 DTSTAMP:${formatDateICS(new Date())}Z
 UID:yiming-fiona-wedding-may3-2026@yimingfiona.com
@@ -647,8 +623,8 @@ document.addEventListener('click', function(e) {
 function showSuccess() {
   document.getElementById('successMsg').classList.add('show');
   showToast('📅', 'Date added to your calendar!');
-  // Celebration burst
-  for (let i = 0; i < 20; i++) setTimeout(mkFloat, i * 80);
+  // Celebration burst - reduced for performance
+  for (let i = 0; i < 8; i++) setTimeout(mkFloat, i * 150);
 }
 
 function showToast(icon, msg) {
@@ -662,7 +638,7 @@ function showToast(icon, msg) {
 // ═══════════════════════════════════════
 // Countdown
 // ═══════════════════════════════════════
-const W = new Date('2026-05-03T16:00:00-05:00');
+const W = new Date('2026-05-03T16:30:00-05:00');
 function tick() {
   const d = Math.max(0, W - Date.now());
   document.getElementById('cd-d').textContent = Math.floor(d / 864e5);
@@ -676,7 +652,7 @@ setInterval(tick, 1000);
 // ═══════════════════════════════════════
 // Floating Icons (paws, hearts, sparkles)
 // ═══════════════════════════════════════
-const icons = ['🐾', '💕', '🐶', '💖', '✨', '💗', '🌸', '💝', '🐕', '💞', '🦋', '🌷'];
+const icons = ['🐾'];
 
 window.mkFloat = function() {
   const el = document.createElement('div');
@@ -696,9 +672,9 @@ window.mkFloat = function() {
   setTimeout(() => el.remove(), dur * 1000);
 };
 
-// Spawn floaters
-setInterval(mkFloat, 2000);
-for (let i = 0; i < 5; i++) setTimeout(mkFloat, i * 300);
+// Spawn floaters - reduced frequency for performance
+setInterval(mkFloat, 4000);
+for (let i = 0; i < 3; i++) setTimeout(mkFloat, i * 500);
 
 // ═══════════════════════════════════════
 // Sparkle particles on background
@@ -708,12 +684,9 @@ function mkSparkle() {
   el.className = 'sparkle';
   el.style.left = Math.random() * 100 + '%';
   el.style.top = Math.random() * 100 + '%';
-  el.style.setProperty('--dur', (3 + Math.random() * 4) + 's');
-  el.style.setProperty('--op', 0.3 + Math.random() * 0.4);
-  el.style.animationDelay = Math.random() * 5 + 's';
   document.querySelector('.bg-canvas').appendChild(el);
 }
-for (let i = 0; i < 30; i++) mkSparkle();
+for (let i = 0; i < 12; i++) mkSparkle();
 
 // ═══════════════════════════════════════
 // Email Autocomplete
@@ -853,7 +826,7 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
     document.getElementById('rsvpForm').style.display = 'none';
     document.getElementById('rsvpSuccess').classList.add('show');
     showToast(isAccepting ? '🎉' : '💛', isAccepting ? "RSVP confirmed! We're so excited!" : "RSVP received. We'll miss you!");
-    for (let i = 0; i < 15; i++) setTimeout(mkFloat, i * 60);
+    for (let i = 0; i < 6; i++) setTimeout(mkFloat, i * 150);
   } catch (err) {
     // Show error panel
     document.getElementById('rsvpForm').style.display = 'none';
@@ -926,17 +899,58 @@ tickInvite();
 setInterval(tickInvite, 1000);
 
 window.bookmarkReminder = function() {
+  var url = window.location.href;
+  var title = "Yiming & Fiona's Wedding";
+
+  // Try Web Share API first (mobile browsers)
   if (navigator.share) {
-    navigator.share({ title: "Yiming & Fiona's Wedding", url: window.location.href });
-  } else {
-    // Copy URL to clipboard
-    navigator.clipboard.writeText(window.location.href).then(function() {
-      showToast('🔗', 'Link copied! Save it to revisit later.');
-    }).catch(function() {
-      showToast('🔗', 'Bookmark this page: ' + window.location.href);
+    navigator.share({ title: title, url: url }).catch(function() {
+      // User cancelled or share failed, try clipboard
+      copyToClipboard(url);
     });
+    return;
   }
+
+  // Desktop: try clipboard
+  copyToClipboard(url);
 };
+
+function copyToClipboard(text) {
+  // Try modern clipboard API
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      showToast('🐾', 'Link copied! Paste it somewhere safe.');
+    }).catch(function() {
+      fallbackCopy(text);
+    });
+  } else {
+    fallbackCopy(text);
+  }
+}
+
+function fallbackCopy(text) {
+  // Fallback for older browsers
+  var textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.focus();
+  textarea.select();
+
+  try {
+    var success = document.execCommand('copy');
+    if (success) {
+      showToast('🐾', 'Link copied! Paste it somewhere safe.');
+    } else {
+      showToast('🐾', 'Press Ctrl+D (Cmd+D on Mac) to bookmark!');
+    }
+  } catch (err) {
+    showToast('🐾', 'Press Ctrl+D (Cmd+D on Mac) to bookmark!');
+  }
+
+  document.body.removeChild(textarea);
+}
 
 })();
 </script>

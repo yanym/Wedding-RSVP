@@ -281,8 +281,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .gift-card .gift-card-icon{font-size:1.8rem;display:block;margin-bottom:.5rem}
 .gift-card .gift-card-title{font-size:.85rem;font-weight:600;margin-bottom:.25rem}
 .gift-card .gift-card-desc{font-size:.72rem;color:var(--txl)}
-.gift-reveal{display:none;padding:1.2rem;background:rgba(255,255,255,0.04);border-radius:var(--rm);border:.5px solid rgba(255,255,255,0.08);text-align:center;animation:fadeSlide .4s var(--eo)}
+.gift-reveal{display:none;padding:1.2rem;background:rgba(255,255,255,0.04);border-radius:var(--rm);border:.5px solid rgba(255,255,255,0.08);text-align:center;animation:fadeSlide .4s var(--eo);transition:border-color .4s,box-shadow .4s}
 .gift-reveal.show{display:block}
+.gift-reveal.flash{border-color:rgba(232,212,168,0.4);box-shadow:0 0 20px rgba(232,212,168,0.15);animation:fadeSlide .4s var(--eo),giftFlash 1.5s ease-out}
+@keyframes giftFlash{0%{box-shadow:0 0 25px rgba(232,212,168,0.35)}100%{box-shadow:0 0 0 transparent}}
 .gift-reveal-title{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:.6rem;color:var(--acl)}
 .gift-reveal-text{font-family:'Questrial',sans-serif;font-size:.88rem;color:var(--txm);line-height:1.7;margin-bottom:.8rem}
 .gift-reveal-text a{color:var(--ac);text-decoration:none;border-bottom:1px dotted var(--ac)}
@@ -661,6 +663,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 (function(){
 'use strict';
 
+// Always start at top on refresh
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // ═══════════════════════════════════════
 // Event Details
 // ═══════════════════════════════════════
@@ -1031,10 +1037,19 @@ window.pickTalent = function(el, val) {
 
 window.showGift = function(el, type) {
   document.querySelectorAll('.gift-card').forEach(function(c) { c.classList.remove('active'); });
-  document.querySelectorAll('.gift-reveal').forEach(function(r) { r.classList.remove('show'); });
+  document.querySelectorAll('.gift-reveal').forEach(function(r) { r.classList.remove('show','flash'); });
   el.classList.add('active');
   var id = type === 'digital' ? 'giftDigital' : type === 'ship' ? 'giftShip' : 'giftSurprise';
-  document.getElementById(id).classList.add('show');
+  var reveal = document.getElementById(id);
+  reveal.classList.add('show');
+  // Scroll into view on mobile only if off-screen
+  setTimeout(function() {
+    var rect = reveal.getBoundingClientRect();
+    if (rect.bottom > window.innerHeight || rect.top < 0) {
+      reveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+    reveal.classList.add('flash');
+  }, 100);
 };
 
 window.copyGiftAddress = function() {

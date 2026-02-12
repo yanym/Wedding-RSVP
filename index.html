@@ -1088,15 +1088,8 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
     if (gInput && gInput.value.trim()) guestNames.push(gInput.value.trim());
   }
 
-  // Build enriched notes so existing Google Sheet captures everything
-  var extraParts = [];
-  if (guestNames.length) extraParts.push('Additional guests: ' + guestNames.join(', '));
   var lodgingVal = document.getElementById('lodgingVal').value;
-  if (lodgingVal) extraParts.push('Lodging: ' + lodgingVal);
   var talentVal = document.getElementById('talentVal').value;
-  if (talentVal) extraParts.push('Talent: ' + talentVal);
-  if (this.elements.notes.value) extraParts.push('Note: ' + this.elements.notes.value);
-  var enrichedNotes = extraParts.join(' | ');
 
   lastSubmitData = {
     name: this.elements.name.value,
@@ -1106,7 +1099,7 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
     guestNames: guestNames.join(', '),
     lodging: lodgingVal || '',
     talent: talentVal || '',
-    notes: enrichedNotes,
+    notes: this.elements.notes.value || '',
     source: 'Save the Date Page'
   };
 

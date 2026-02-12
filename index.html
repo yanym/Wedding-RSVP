@@ -193,15 +193,22 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .mf-textarea::placeholder{color:var(--txl)}
 .mf-optional{font-weight:400;color:var(--txm);text-transform:none;letter-spacing:0;font-size:.68rem}
 
-/* RSVP result states */
-.rsvp-result{display:none;text-align:center;animation:successPop .5s var(--es)}
+/* RSVP result states — beautified */
+.rsvp-result{display:none;text-align:center;animation:successPop .6s var(--es)}
 .rsvp-result.show{display:block}
-.rsvp-result-icon{font-size:2.8rem;margin-bottom:.8rem}
-.rsvp-result-title{font-family:'DM Serif Display',serif;font-size:1.25rem;margin-bottom:.5rem}
-.rsvp-result-detail{font-family:'Questrial',sans-serif;font-size:.9rem;color:var(--txm);line-height:1.7;margin-bottom:1rem}
+.rsvp-result-box{padding:1.8rem 1.5rem;border-radius:var(--rl);position:relative;overflow:hidden}
+.rsvp-result.success .rsvp-result-box{background:linear-gradient(135deg,rgba(184,224,176,0.1) 0%,rgba(232,212,168,0.08) 100%);border:.5px solid rgba(184,224,176,0.2)}
+.rsvp-result.error .rsvp-result-box{background:linear-gradient(135deg,rgba(244,184,192,0.1) 0%,rgba(232,212,168,0.08) 100%);border:.5px solid rgba(244,184,192,0.2)}
+.rsvp-result-box::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(184,224,176,0.25),rgba(232,212,168,0.15),rgba(224,212,248,0.2));border-radius:calc(var(--rl) + 1px);z-index:-1;opacity:.5}
+.rsvp-result-icon{font-size:3.5rem;margin-bottom:1rem;display:block;animation:iconBounce 1s var(--es)}
+@keyframes iconBounce{0%{transform:scale(0) rotate(-20deg)}50%{transform:scale(1.2) rotate(5deg)}100%{transform:scale(1) rotate(0)}}
+.rsvp-result-title{font-family:'DM Serif Display',serif;font-size:1.4rem;margin-bottom:.6rem}
+.rsvp-result-detail{font-family:'Questrial',sans-serif;font-size:.92rem;color:var(--txm);line-height:1.8;margin-bottom:1.2rem}
 .rsvp-result-detail strong{color:var(--ac);font-weight:500}
 .rsvp-result.success .rsvp-result-title{color:var(--sa)}
 .rsvp-result.error .rsvp-result-title{color:var(--ro)}
+.rsvp-result-confetti{font-size:.9rem;letter-spacing:.3rem;margin-bottom:.8rem;animation:confettiFade 2s ease-in-out infinite alternate}
+@keyframes confettiFade{from{opacity:.6}to{opacity:1}}
 .rsvp-result-actions{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
 .rsvp-again-btn,.rsvp-retry-btn,.rsvp-email-btn{padding:.75rem 1.4rem;border-radius:980px;font-size:.85rem;font-weight:500;cursor:pointer;transition:all .3s var(--eo);border:none}
 .rsvp-again-btn{background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.1)}
@@ -231,6 +238,77 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 .invite-arrived-text{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ac);margin-bottom:.4rem}
 .invite-arrived-sub{font-family:'Questrial',sans-serif;font-size:.88rem;color:var(--txm)}
 
+/* Guest names */
+.guest-names{display:none;margin-top:.8rem}.guest-names.show{display:block}
+.guest-names-hint{font-size:.82rem;color:var(--txm);margin-bottom:.6rem;font-style:italic}
+.guest-name-row{margin-bottom:.5rem}
+.guest-name-row input{width:100%;padding:.75rem 1rem;font-family:'Inter',sans-serif;font-size:.9rem;color:var(--tx);background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rs);outline:none;transition:all .3s ease}
+.guest-name-row input:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(232,212,168,0.15);background:var(--surh)}
+.guest-name-row input::placeholder{color:var(--txl)}
+
+/* Conditional attendance sections */
+.att-conditional{display:none;animation:fadeSlide .4s var(--eo)}.att-conditional.show{display:block}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Lodging toggle */
+.lodging-toggle{display:flex;gap:.5rem;flex-wrap:wrap}
+.lodging-btn{flex:1;min-width:0;padding:.75rem .5rem;text-align:center;background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rs);font-size:.82rem;font-weight:500;color:var(--tx);cursor:pointer;transition:all .35s var(--eo);line-height:1.3}
+.lodging-btn:hover{background:var(--surh)}
+.lodging-btn.selected{background:rgba(232,212,168,0.15);border-color:var(--ac);color:var(--ac)}
+.lodging-btn .lodging-icon{font-size:1.3rem;display:block;margin-bottom:.3rem}
+
+/* Talent/Speech cards */
+.talent-cards{display:flex;gap:.5rem;flex-wrap:wrap}
+.talent-card{flex:1;min-width:0;padding:.85rem .5rem;text-align:center;background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rs);cursor:pointer;transition:all .35s var(--eo);line-height:1.3}
+.talent-card:hover{background:var(--surh);transform:translateY(-2px)}
+.talent-card.selected{background:rgba(224,212,248,0.15);border-color:var(--lav);color:var(--lav)}
+.talent-card .talent-icon{font-size:1.5rem;display:block;margin-bottom:.4rem}
+.talent-card .talent-label{font-size:.78rem;font-weight:500}
+.talent-card .talent-sub{font-size:.68rem;color:var(--txl);margin-top:.2rem}
+.talent-hint{font-size:.78rem;color:var(--txm);margin-top:.5rem;text-align:center}
+
+/* Registry section — always visible & prominent */
+.registry-section{margin-top:2.5rem;padding:2rem 1.5rem;border-radius:var(--rl);background:linear-gradient(135deg,rgba(232,212,168,0.06) 0%,rgba(224,212,248,0.06) 100%);border:.5px solid rgba(232,212,168,0.12);position:relative}
+.registry-header{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.4rem}
+.registry-icon{font-size:1.6rem}
+.registry-title{font-family:'DM Serif Display',serif;font-size:1.35rem}
+.registry-sub{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--txm);margin-bottom:.3rem;text-align:center}
+.registry-note{font-family:'Questrial',sans-serif;font-size:.82rem;color:var(--txl);text-align:center;font-style:italic;margin-bottom:1.2rem}
+.gift-flow{display:flex;gap:.6rem;margin-bottom:1rem;flex-wrap:wrap}
+.gift-card{flex:1;min-width:100px;padding:1rem .6rem;text-align:center;background:var(--sur);border:.5px solid rgba(255,255,255,0.12);border-radius:var(--rm);cursor:pointer;transition:all .4s var(--eo)}
+.gift-card:hover{background:var(--surh);transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,0.2)}
+.gift-card.active{border-color:var(--ac);background:rgba(232,212,168,0.1)}
+.gift-card .gift-card-icon{font-size:1.8rem;display:block;margin-bottom:.5rem}
+.gift-card .gift-card-title{font-size:.85rem;font-weight:600;margin-bottom:.25rem}
+.gift-card .gift-card-desc{font-size:.72rem;color:var(--txl)}
+.gift-reveal{display:none;padding:1.2rem;background:rgba(255,255,255,0.04);border-radius:var(--rm);border:.5px solid rgba(255,255,255,0.08);text-align:center;animation:fadeSlide .4s var(--eo)}
+.gift-reveal.show{display:block}
+.gift-reveal-title{font-family:'DM Serif Display',serif;font-size:1.05rem;margin-bottom:.6rem;color:var(--acl)}
+.gift-reveal-text{font-family:'Questrial',sans-serif;font-size:.88rem;color:var(--txm);line-height:1.7;margin-bottom:.8rem}
+.gift-reveal-text a{color:var(--ac);text-decoration:none;border-bottom:1px dotted var(--ac)}
+
+/* Payment method buttons (Venmo / Zelle) */
+.payment-methods{display:flex;flex-direction:column;gap:.6rem;margin:.6rem 0}
+.payment-btn{display:flex;align-items:center;gap:.8rem;padding:.85rem 1.1rem;border-radius:var(--rs);text-decoration:none;color:var(--tx);cursor:pointer;transition:all .3s var(--eo);border:none;font-family:'Inter',sans-serif;font-size:.9rem}
+.payment-btn:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(0,0,0,0.2)}
+.payment-btn:active{transform:scale(.98)}
+.venmo-btn{background:linear-gradient(135deg,rgba(0,140,223,0.15) 0%,rgba(0,140,223,0.08) 100%);border:.5px solid rgba(0,140,223,0.3)}
+.venmo-btn:hover{background:linear-gradient(135deg,rgba(0,140,223,0.25) 0%,rgba(0,140,223,0.15) 100%)}
+.zelle-btn{background:linear-gradient(135deg,rgba(108,62,152,0.15) 0%,rgba(108,62,152,0.08) 100%);border:.5px solid rgba(108,62,152,0.3)}
+.zelle-btn:hover{background:linear-gradient(135deg,rgba(108,62,152,0.25) 0%,rgba(108,62,152,0.15) 100%)}
+.payment-logo{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem;flex-shrink:0}
+.venmo-btn .payment-logo{background:rgba(0,140,223,0.2);color:#3D95CE}
+.zelle-btn .payment-logo{background:rgba(108,62,152,0.2);color:#9B6FC0}
+.payment-info{text-align:left;flex:1}
+.payment-name{font-weight:600;font-size:.9rem}
+.payment-handle{font-size:.78rem;color:var(--txl);margin-top:.1rem}
+.payment-action{font-size:.78rem;font-weight:500;color:var(--ac);white-space:nowrap}
+
+.address-box{background:rgba(232,212,168,0.08);border-radius:var(--rs);padding:1rem;border:.5px solid rgba(232,212,168,0.15);margin:.6rem 0}
+.address-box p{font-family:'Questrial',sans-serif;font-size:.9rem;color:var(--txm);line-height:1.7}
+.address-copy-btn{margin-top:.6rem;padding:.5rem 1rem;background:var(--sur);color:var(--tx);border:.5px solid rgba(255,255,255,0.12);border-radius:980px;font-size:.8rem;cursor:pointer;transition:all .3s}
+.address-copy-btn:hover{background:var(--surh)}
+
 /* ═══ Responsive ═══ */
 @media(max-width:480px){
   .main{padding:0;min-height:100vh;min-height:100dvh}
@@ -252,6 +330,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
   .rsvp-result-actions button{width:100%}
   .cal-option-name{font-size:.88rem}
   .cal-option-sub{font-size:.72rem}
+  .lodging-toggle{flex-direction:column}
+  .talent-cards{flex-direction:column}
+  .gift-flow{flex-direction:column}
+  .registry-section{padding:1.5rem 1.2rem}
 }
 </style>
 </head>
@@ -407,6 +489,10 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
               <span class="stepper-hint">Including yourself</span>
             </div>
             <input type="hidden" name="partySize" id="partySize" value="1">
+            <div class="guest-names" id="guestNames">
+              <div class="guest-names-hint">We need everyone's name for the seating chart — a.k.a. strategic cake-proximity planning 🍰</div>
+              <div id="guestNameInputs"></div>
+            </div>
           </div>
           <div class="mf-group">
             <label class="mf-label">Will you join us?</label>
@@ -415,6 +501,47 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
               <div class="att-btn" onclick="pickAtt(this,'no')">😢 Can't make it</div>
             </div>
             <input type="hidden" name="attendance" id="attVal" required>
+          </div>
+          <div class="mf-group att-conditional" id="lodgingGroup">
+            <label class="mf-label">Need a Place to Crash? 🏠</label>
+            <div style="font-size:.82rem;color:var(--txm);margin-bottom:.6rem">Before and after all that dancing, you might need somewhere to collapse gracefully</div>
+            <div class="lodging-toggle">
+              <div class="lodging-btn" onclick="pickLodging(this,'yes')">
+                <span class="lodging-icon">🏠</span>
+                Yes please!
+              </div>
+              <div class="lodging-btn" onclick="pickLodging(this,'no')">
+                <span class="lodging-icon">😎</span>
+                I got myself covered!
+              </div>
+              <div class="lodging-btn" onclick="pickLodging(this,'maybe')">
+                <span class="lodging-icon">🤔</span>
+                Still figuring it out
+              </div>
+            </div>
+            <input type="hidden" name="lodging" id="lodgingVal">
+          </div>
+          <div class="mf-group att-conditional" id="talentGroup">
+            <label class="mf-label">Feeling Brave? 🎤</label>
+            <div style="font-size:.82rem;color:var(--txm);margin-bottom:.6rem">Want to steal the spotlight for a moment? We dare you!</div>
+            <div class="talent-cards">
+              <div class="talent-card" onclick="pickTalent(this,'speech')">
+                <span class="talent-icon">🎤</span>
+                <div class="talent-label">A Heartfelt Speech</div>
+                <div class="talent-sub">Words that'll make everyone cry</div>
+              </div>
+              <div class="talent-card" onclick="pickTalent(this,'performance')">
+                <span class="talent-icon">🎸</span>
+                <div class="talent-label">A Performance</div>
+                <div class="talent-sub">Hold my drink & watch this</div>
+              </div>
+              <div class="talent-card" onclick="pickTalent(this,'none')">
+                <span class="talent-icon">😎</span>
+                <div class="talent-label">Here for the Cake</div>
+                <div class="talent-sub">I'll cheer from my seat</div>
+              </div>
+            </div>
+            <input type="hidden" name="talent" id="talentVal">
           </div>
           <div class="mf-group">
             <label class="mf-label">Note to the Couple <span class="mf-optional">(optional)</span></label>
@@ -427,24 +554,104 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
         </form>
 
         <div class="rsvp-result success" id="rsvpSuccess">
-          <div class="rsvp-result-icon">🥂</div>
-          <div class="rsvp-result-title">RSVP Confirmed!</div>
-          <div class="rsvp-result-detail" id="rsvpSuccessDetail"></div>
-          <div class="rsvp-result-actions">
-            <button class="rsvp-again-btn" onclick="resetRsvp()">Submit Another RSVP</button>
+          <div class="rsvp-result-box">
+            <div class="rsvp-result-confetti">🎊 ✨ 🥂 ✨ 🎊</div>
+            <div class="rsvp-result-icon">🥂</div>
+            <div class="rsvp-result-title">You're Officially on the Guest List!</div>
+            <div class="rsvp-result-detail" id="rsvpSuccessDetail"></div>
+            <div class="rsvp-result-confetti">💛 🐾 💛</div>
+            <div class="rsvp-result-actions">
+              <button class="rsvp-again-btn" onclick="resetRsvp()">Submit Another RSVP</button>
+            </div>
           </div>
         </div>
 
         <div class="rsvp-result error" id="rsvpError">
-          <div class="rsvp-result-icon">😥</div>
-          <div class="rsvp-result-title">Something Went Wrong</div>
-          <div class="rsvp-result-detail">We couldn't submit your RSVP right now. Please try again or send us an email instead.</div>
-          <div class="rsvp-result-actions">
-            <button class="rsvp-retry-btn" onclick="retryRsvp()">Try Again</button>
-            <button class="rsvp-email-btn" onclick="emailFallback()">Send via Email</button>
+          <div class="rsvp-result-box">
+            <div class="rsvp-result-icon">😥</div>
+            <div class="rsvp-result-title">Something Went Wrong</div>
+            <div class="rsvp-result-detail">We couldn't submit your RSVP right now. Please try again or send us an email instead.</div>
+            <div class="rsvp-result-actions">
+              <button class="rsvp-retry-btn" onclick="retryRsvp()">Try Again</button>
+              <button class="rsvp-email-btn" onclick="emailFallback()">Send via Email</button>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Wedding Registry / Gift Section -->
+      <div class="registry-section">
+        <div class="registry-header">
+          <span class="registry-icon">🎁</span>
+          <div class="registry-title">The Gift Situation</div>
+        </div>
+        <div class="registry-sub">Your presence is honestly the greatest present!</div>
+        <div class="registry-note">But if you insist on spoiling us... here's how to make us blush</div>
+
+        <div class="gift-flow">
+          <div class="gift-card" onclick="showGift(this,'digital')">
+            <span class="gift-card-icon">💸</span>
+            <div class="gift-card-title">Send Digital Love</div>
+            <div class="gift-card-desc">Quick, easy & very appreciated</div>
+          </div>
+          <div class="gift-card" onclick="showGift(this,'ship')">
+            <span class="gift-card-icon">📦</span>
+            <div class="gift-card-title">Ship a Surprise</div>
+            <div class="gift-card-desc">We love doorstep deliveries</div>
+          </div>
+          <div class="gift-card" onclick="showGift(this,'surprise')">
+            <span class="gift-card-icon">🎁</span>
+            <div class="gift-card-title">Surprise Us!</div>
+            <div class="gift-card-desc">Mystery is the spice of life</div>
+          </div>
+        </div>
+
+        <div class="gift-reveal" id="giftDigital">
+          <div class="gift-reveal-title">Digital Love, Coming Right Up! 💕</div>
+          <div class="gift-reveal-text">Tap a button below to send some love our way. Every penny fuels our happily ever after (and Nina's treat fund 🐾).</div>
+          <div class="payment-methods">
+            <!-- TODO: Replace YOUR-VENMO-USERNAME with your actual Venmo username -->
+            <a class="payment-btn venmo-btn" href="https://venmo.com/u/Zhuoran-Huang" target="_blank" rel="noopener">
+              <div class="payment-logo">V</div>
+              <div class="payment-info">
+                <div class="payment-name">Venmo</div>
+                <div class="payment-handle">@Zhuoran-Huang</div>
+              </div>
+              <span class="payment-action">Open →</span>
+            </a>
+            <div class="payment-btn zelle-btn" onclick="copyZelle()">
+              <div class="payment-logo">Z</div>
+              <div class="payment-info">
+                <div class="payment-name">Zelle</div>
+                <!-- TODO: Replace with your Zelle email or phone -->
+                <div class="payment-handle">Tap to copy email</div>
+              </div>
+              <span class="payment-action">📋 Copy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-reveal" id="giftShip">
+          <div class="gift-reveal-title">Ship Something Our Way! 📬</div>
+          <div class="gift-reveal-text">We'd love a surprise at our doorstep! Send it here:</div>
+          <div class="address-box">
+            <!-- TODO: Replace with your actual address -->
+            <p>Yiming & Fiona<br>
+            1202 Stobaugh St, Unit A<br>
+            Austin, TX, 78757</p>
+          </div>
+          <button type="button" class="address-copy-btn" onclick="copyGiftAddress()">📋 Copy Address</button>
+        </div>
+
+        <div class="gift-reveal" id="giftSurprise">
+          <div class="gift-reveal-title">We Love a Good Mystery! 🕵️</div>
+          <div class="gift-reveal-text">
+            You beautiful human! We can't wait to see what you've got up your sleeve. See you at the party!<br><br>
+            <em>(Plot twist: just you showing up is already the best gift)</em>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -477,7 +684,8 @@ const endDate = new Date('2026-05-03T23:00:00-05:00');
 // HOW TO SET UP (takes ~5 minutes):
 // 1. Go to https://docs.google.com/spreadsheets and create a new spreadsheet
 // 2. Name it "Wedding RSVPs" and add headers in Row 1:
-//    A1: Timestamp | B1: Name | C1: Email | D1: Attendance | E1: Party Size | F1: Notes | G1: Source
+//    A1: Timestamp | B1: Name | C1: Email | D1: Attendance | E1: Party Size
+//    F1: Guest Names | G1: Lodging | H1: Talent | I1: Notes | J1: Source
 // 3. Click Extensions → Apps Script
 // 4. Delete any code and paste this:
 //
@@ -490,6 +698,9 @@ const endDate = new Date('2026-05-03T23:00:00-05:00');
 //        data.email,
 //        data.attendance,
 //        data.partySize,
+//        data.guestNames || '',
+//        data.lodging || '',
+//        data.talent || '',
 //        data.notes || '',
 //        data.source
 //      ]);
@@ -504,7 +715,7 @@ const endDate = new Date('2026-05-03T23:00:00-05:00');
 // 8. Click Deploy, authorize when prompted, and copy the Web app URL
 // 9. Paste the URL below replacing the placeholder:
 // NOTE: If you already deployed, go to Deploy → Manage deployments → Edit → New version to update
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyYjMPPoKcD9i6WFjEQeKErk9E6BBlWTXlG-CzO_ADC1kVe-ue6ET-A9ZCkOjiyGeNR7g/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwg9U5eJgEHhNTEIOM0CNB2Kx9dvd2kAt-yluRGMDhRwopO9iRPkof6YttcvsbfVOmsMw/exec';
 
 function formatDateGoogle(date) {
   return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
@@ -763,7 +974,34 @@ window.stepParty = function(dir) {
   // Toggle disabled state on buttons
   document.getElementById('stepDown').classList.toggle('disabled', partyCount <= 1);
   document.getElementById('stepUp').classList.toggle('disabled', partyCount >= 20);
+
+  // Update guest name inputs
+  updateGuestNames();
 };
+
+function updateGuestNames() {
+  var container = document.getElementById('guestNames');
+  var inputs = document.getElementById('guestNameInputs');
+  if (partyCount <= 1) {
+    container.classList.remove('show');
+    inputs.innerHTML = '';
+    return;
+  }
+  container.classList.add('show');
+  // Preserve existing values
+  var existing = {};
+  inputs.querySelectorAll('input').forEach(function(inp) {
+    if (inp.value) existing[inp.name] = inp.value;
+  });
+  var html = '';
+  var funLabels = ['Your +1', 'Guest #3', 'Guest #4', 'Guest #5', 'The whole squad member #'];
+  for (var i = 2; i <= partyCount; i++) {
+    var label = i <= 5 ? funLabels[i - 2] : funLabels[4] + i;
+    var val = existing['guest' + i] || '';
+    html += '<div class="guest-name-row"><input class="mf-input" type="text" name="guest' + i + '" placeholder="' + label + '\'s full name" value="' + val.replace(/"/g, '&quot;') + '"></div>';
+  }
+  inputs.innerHTML = html;
+}
 
 // ═══════════════════════════════════════
 // RSVP — Attendance & Form
@@ -772,6 +1010,58 @@ window.pickAtt = function(el, val) {
   document.querySelectorAll('.att-btn').forEach(b => b.classList.remove('sel-yes', 'sel-no'));
   el.classList.add(val === 'yes' ? 'sel-yes' : 'sel-no');
   document.getElementById('attVal').value = val === 'yes' ? 'Joyfully Accepts' : 'Regretfully Declines';
+  // Show/hide conditional sections (lodging, speech) only when attending
+  document.querySelectorAll('.att-conditional').forEach(function(c) {
+    if (val === 'yes') c.classList.add('show');
+    else c.classList.remove('show');
+  });
+};
+
+window.pickLodging = function(el, val) {
+  document.querySelectorAll('.lodging-btn').forEach(function(b) { b.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('lodgingVal').value = val;
+};
+
+window.pickTalent = function(el, val) {
+  document.querySelectorAll('.talent-card').forEach(function(c) { c.classList.remove('selected'); });
+  el.classList.add('selected');
+  document.getElementById('talentVal').value = val;
+};
+
+window.showGift = function(el, type) {
+  document.querySelectorAll('.gift-card').forEach(function(c) { c.classList.remove('active'); });
+  document.querySelectorAll('.gift-reveal').forEach(function(r) { r.classList.remove('show'); });
+  el.classList.add('active');
+  var id = type === 'digital' ? 'giftDigital' : type === 'ship' ? 'giftShip' : 'giftSurprise';
+  document.getElementById(id).classList.add('show');
+};
+
+window.copyGiftAddress = function() {
+  var address = "Yiming & Fiona\n1202 Stobaugh St, Unit A\nAustin, TX, 78757";
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(address).then(function() {
+      showToast('📋', 'Address copied to clipboard!');
+    }).catch(function() {
+      showToast('📋', 'Address is shown above — jot it down!');
+    });
+  } else {
+    showToast('📋', 'Address is shown above — jot it down!');
+  }
+};
+
+// TODO: Replace with your actual Zelle email or phone number
+var ZELLE_ID = '7814729353';
+window.copyZelle = function() {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(ZELLE_ID).then(function() {
+      showToast('💜', 'Zelle email copied! Open your banking app to send.');
+    }).catch(function() {
+      showToast('💜', 'Send to: ' + (ZELLE_ID));
+    });
+  } else {
+    showToast('💜', 'Send to: ' + ZELLE_ID);
+  }
 };
 
 let lastSubmitData = null;
@@ -791,12 +1081,32 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
   btn.classList.add('loading');
   btn.innerHTML = '<span class="spinner"></span> Sending...';
 
+  // Collect guest names
+  var guestNames = [];
+  for (var gi = 2; gi <= partyCount; gi++) {
+    var gInput = this.elements['guest' + gi];
+    if (gInput && gInput.value.trim()) guestNames.push(gInput.value.trim());
+  }
+
+  // Build enriched notes so existing Google Sheet captures everything
+  var extraParts = [];
+  if (guestNames.length) extraParts.push('Additional guests: ' + guestNames.join(', '));
+  var lodgingVal = document.getElementById('lodgingVal').value;
+  if (lodgingVal) extraParts.push('Lodging: ' + lodgingVal);
+  var talentVal = document.getElementById('talentVal').value;
+  if (talentVal) extraParts.push('Talent: ' + talentVal);
+  if (this.elements.notes.value) extraParts.push('Note: ' + this.elements.notes.value);
+  var enrichedNotes = extraParts.join(' | ');
+
   lastSubmitData = {
     name: this.elements.name.value,
     email: this.elements.email.value,
     attendance: att,
     partySize: partyCount,
-    notes: this.elements.notes.value || '',
+    guestNames: guestNames.join(', '),
+    lodging: lodgingVal || '',
+    talent: talentVal || '',
+    notes: enrichedNotes,
     source: 'Save the Date Page'
   };
 
@@ -817,9 +1127,13 @@ document.getElementById('rsvpForm').addEventListener('submit', async function(e)
     var detailHtml = 'Thank you, <strong>' + lastSubmitData.name + '</strong>!';
     if (isAccepting) {
       detailHtml += '<br>We\'ve saved your spot for <strong>' + partyCount + ' guest' + (partyCount > 1 ? 's' : '') + '</strong>.';
+      if (lastSubmitData.guestNames) detailHtml += '<br>VIP squad: <strong>' + lastSubmitData.guestNames + '</strong>';
+      if (lastSubmitData.lodging === 'yes') detailHtml += '<br>🏨 We\'ll send you lodging options soon!';
+      if (lastSubmitData.talent === 'speech') detailHtml += '<br>🎤 Speech mode: activated! We\'re already crying.';
+      else if (lastSubmitData.talent === 'performance') detailHtml += '<br>🎸 The stage is yours! Can\'t wait!';
       detailHtml += '<br><br>We can\'t wait to celebrate with you!';
     } else {
-      detailHtml += '<br>We\'re sorry you can\'t make it. You\'ll be missed!';
+      detailHtml += '<br>We\'re sorry you can\'t make it. You\'ll be missed! 💛';
     }
     document.getElementById('rsvpSuccessDetail').innerHTML = detailHtml;
 
@@ -846,6 +1160,13 @@ window.resetRsvp = function() {
   document.getElementById('stepDown').classList.add('disabled');
   document.getElementById('stepUp').classList.remove('disabled');
   document.querySelectorAll('.att-btn').forEach(b => b.classList.remove('sel-yes', 'sel-no'));
+  document.getElementById('guestNames').classList.remove('show');
+  document.getElementById('guestNameInputs').innerHTML = '';
+  document.querySelectorAll('.att-conditional').forEach(function(c) { c.classList.remove('show'); });
+  document.querySelectorAll('.lodging-btn').forEach(function(b) { b.classList.remove('selected'); });
+  document.querySelectorAll('.talent-card').forEach(function(c) { c.classList.remove('selected'); });
+  document.getElementById('lodgingVal').value = '';
+  document.getElementById('talentVal').value = '';
   document.getElementById('rsvpSuccess').classList.remove('show');
   document.getElementById('rsvpError').classList.remove('show');
   var btn = document.getElementById('rsvpBtn');
